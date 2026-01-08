@@ -16,7 +16,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
              {/* Decorative element */}
-            <div aria-hidden="true" className="absolute -top-10 -right-10 w-40 h-40 bg-gold-500/20 rounded-full blur-3xl"></div>
+            <div aria-hidden="true" className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
             
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-800">
               <img 
@@ -38,7 +38,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-gold-500 font-bold tracking-widest uppercase mb-2">כאן אני נכנסת לתמונה</h2>
+            <h2 className="text-blue-500 font-bold tracking-widest uppercase mb-2">כאן אני נכנסת לתמונה</h2>
             <h3 id="about-title" className="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight">
               אני אלישבע. <br/>
               <span className="text-stone-400">יוצרת תוכן וסושיאל לענף העיצוב.</span>
@@ -57,7 +57,7 @@ const About: React.FC = () => {
                 "מיקוד בבניית אמון מול הלקוח הבא שלך"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-lg">
-                  <CheckCircle className="text-gold-500 flex-shrink-0" size={24} aria-hidden="true" />
+                  <CheckCircle className="text-blue-500 flex-shrink-0" size={24} aria-hidden="true" />
                   <span>{item}</span>
                 </li>
               ))}

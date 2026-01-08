@@ -35,8 +35,8 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo Area */}
         <div className={`text-2xl font-bold tracking-wider uppercase transition-colors duration-300 ${isScrolled ? 'text-white' : 'text-stone-900'}`}>
-          <a href="#" aria-label="Elisheva Lev Home" className="focus:outline-none focus:ring-2 focus:ring-gold-400 rounded-lg p-1">
-            <span className="font-display">ELISHEVA</span> <span className="text-gold-400">LEV</span>
+          <a href="#" aria-label="Elisheva Lev Home" className="focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-1">
+            <span className="font-display">ELISHEVA</span> <span className="text-blue-400">LEV</span>
           </a>
         </div>
 
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium hover:text-gold-400 transition-colors focus:outline-none focus:ring-2 focus:ring-gold-400 rounded px-2 py-1 ${
+              className={`text-sm font-medium hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1 ${
                 isScrolled ? 'text-stone-200' : 'text-stone-800'
               }`}
             >
@@ -60,14 +60,14 @@ const Header: React.FC = () => {
           <a 
             href="#" 
             aria-label="Visit Instagram Profile"
-            className={`hover:text-gold-400 transition-colors focus:outline-none focus:ring-2 focus:ring-gold-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
+            className={`hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
           >
             <Instagram size={20} aria-hidden="true" />
           </a>
           <a 
             href="mailto:elishevalev5@gmail.com" 
             aria-label="Send an Email"
-            className={`hover:text-gold-400 transition-colors focus:outline-none focus:ring-2 focus:ring-gold-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
+            className={`hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
           >
             <Mail size={20} aria-hidden="true" />
           </a>
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button
-          className={`md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
+          className={`md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Open menu"
           aria-expanded={mobileMenuOpen}
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-2xl font-bold text-white hover:text-gold-400 transition-colors focus:outline-none focus:ring-2 focus:ring-gold-400 rounded px-4 py-2"
+                  className="text-2xl font-bold text-white hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-4 py-2"
                 >
                   {link.name}
                 </a>
@@ -121,8 +121,8 @@ const Header: React.FC = () => {
             </nav>
 
             <div className="flex gap-6 mt-8">
-               <a href="#" aria-label="Instagram" className="text-stone-400 hover:text-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400 rounded-full p-2"><Instagram size={28} aria-hidden="true" /></a>
-               <a href="#" aria-label="Email" className="text-stone-400 hover:text-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400 rounded-full p-2"><Mail size={28} aria-hidden="true" /></a>
+               <a href="#" aria-label="Instagram" className="text-stone-400 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"><Instagram size={28} aria-hidden="true" /></a>
+               <a href="#" aria-label="Email" className="text-stone-400 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"><Mail size={28} aria-hidden="true" /></a>
             </div>
           </motion.div>
         )}

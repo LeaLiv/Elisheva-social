@@ -34,7 +34,7 @@ const PainPoints: React.FC = () => {
         >
           <h2 id="pain-points-title" className="text-3xl md:text-5xl font-display font-black text-stone-900 leading-tight">
             בואי נודה על האמת: <br />
-            <span className="text-gold-600">היום, זה תעודת הזהות שלך.</span>
+            <span className="text-blue-600">היום, זה תעודת הזהות שלך.</span>
           </h2>
           <p className="text-lg md:text-xl text-stone-600 leading-relaxed">
             לפני שלקוח מרים אלייך טלפון, הוא קודם כל בודק אותך באינסטגרם. 
@@ -63,7 +63,7 @@ const PainPoints: React.FC = () => {
               transition={{ delay: index * 0.2, duration: 0.5 }}
               className="bg-stone-50 p-10 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100 group"
             >
-              <div className="mb-6 text-stone-400 group-hover:text-gold-500 transition-colors duration-300">
+              <div className="mb-6 text-stone-400 group-hover:text-blue-500 transition-colors duration-300">
                 {point.icon}
               </div>
               <h3 className="text-2xl font-bold text-stone-800 mb-3">{point.title}</h3>

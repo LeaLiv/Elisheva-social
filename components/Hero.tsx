@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-lg md:text-xl font-medium text-gold-600 mb-4 tracking-[0.2em] uppercase">
+          <h2 className="text-lg md:text-xl font-medium text-blue-400 mb-4 tracking-[0.2em] uppercase">
             תוכן, סושיאל וניהול לענף העיצוב
           </h2>
         </motion.div>
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
         >
           <a
             href="#contact"
-            className="px-8 py-4 bg-stone-900 text-white font-bold rounded-full hover:bg-gold-500 transition-colors duration-300 shadow-xl"
+            className="px-8 py-4 bg-stone-900 text-white font-bold rounded-full hover:bg-blue-500 transition-colors duration-300 shadow-xl"
           >
             בואי נדבר תכלס
           </a>

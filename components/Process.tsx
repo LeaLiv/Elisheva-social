@@ -91,7 +91,7 @@ const Process: React.FC = () => {
                <div className="space-y-6">
                  {features.map((f, i) => (
                    <div key={i} className="flex gap-4 bg-stone-50 p-6 rounded-xl border border-stone-100 transition-all hover:shadow-md">
-                     <div className="mt-1 bg-gold-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
+                     <div className="mt-1 bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
                        <Check size={16} />
                      </div>
                      <div>
@@ -105,7 +105,7 @@ const Process: React.FC = () => {
             
             <div className="w-full md:w-2/5 flex flex-col justify-center">
               <div className="relative sticky top-24">
-                <div className="absolute inset-0 bg-gold-500 rounded-[2rem] -rotate-3 opacity-20" aria-hidden="true"></div>
+                <div className="absolute inset-0 bg-blue-500 rounded-[2rem] -rotate-3 opacity-20" aria-hidden="true"></div>
                 <img 
                   src="https://picsum.photos/500/700?random=3" 
                   alt="Full Social Media Management" 
