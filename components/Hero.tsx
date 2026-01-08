@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-lg md:text-xl font-medium text-blue-400 mb-4 tracking-[0.2em] uppercase">
+          <h2 className="text-lg md:text-xl font-medium text-blue-600 mb-4 tracking-[0.2em] uppercase">
             תוכן, סושיאל וניהול לענף העיצוב
           </h2>
         </motion.div>

@@ -24,15 +24,15 @@ const Contact: React.FC = () => {
             </div>
             
             <div className="space-y-6">
-              <a href="tel:0502092507" className="flex items-center gap-4 text-lg hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
+              <a href="tel:0502092507" className="flex items-center gap-4 text-lg hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
                 <div className="bg-stone-800 p-3 rounded-full"><Phone size={20} aria-hidden="true" /></div>
                 <span aria-label="Call 050-2092507">050-2092507</span>
               </a>
-              <a href="mailto:elishelev5@gmail.com" className="flex items-center gap-4 text-lg hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
+              <a href="mailto:elishelev5@gmail.com" className="flex items-center gap-4 text-lg hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
                 <div className="bg-stone-800 p-3 rounded-full"><Mail size={20} aria-hidden="true" /></div>
                 <span aria-label="Email elishelev5@gmail.com">elishelev5@gmail.com</span>
               </a>
-              <a href="#" className="flex items-center gap-4 text-lg hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
+              <a href="#" className="flex items-center gap-4 text-lg hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
                 <div className="bg-stone-800 p-3 rounded-full"><Instagram size={20} aria-hidden="true" /></div>
                 <span>@elisheva_lev</span>
               </a>

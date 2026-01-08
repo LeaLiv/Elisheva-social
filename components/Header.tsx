@@ -36,7 +36,7 @@ const Header: React.FC = () => {
         {/* Logo Area */}
         <div className={`text-2xl font-bold tracking-wider uppercase transition-colors duration-300 ${isScrolled ? 'text-white' : 'text-stone-900'}`}>
           <a href="#" aria-label="Elisheva Lev Home" className="focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-1">
-            <span className="font-display">ELISHEVA</span> <span className="text-blue-400">LEV</span>
+            <span className="font-display">ELISHEVA</span> <span className="text-blue-500">LEV</span>
           </a>
         </div>
 
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1 ${
+              className={`text-sm font-medium hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1 ${
                 isScrolled ? 'text-stone-200' : 'text-stone-800'
               }`}
             >
@@ -60,14 +60,14 @@ const Header: React.FC = () => {
           <a 
             href="#" 
             aria-label="Visit Instagram Profile"
-            className={`hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
+            className={`hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
           >
             <Instagram size={20} aria-hidden="true" />
           </a>
           <a 
             href="mailto:elishevalev5@gmail.com" 
             aria-label="Send an Email"
-            className={`hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
+            className={`hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
           >
             <Mail size={20} aria-hidden="true" />
           </a>
