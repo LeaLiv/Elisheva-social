@@ -36,7 +36,7 @@ const Header: React.FC = () => {
         <div className="flex-shrink-0">
           <a href="#" aria-label="Elisheva Lev Home" className="focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-1 block">
             <img
-              src={isScrolled ? "../assets/logo.png" : "../assets/black-logo.png"}
+              src={isScrolled ? "/assets/logo.png" : "/assets/black-logo.png"}
               alt="Elisheva Lev - Interior Design Social Media"
               className="h-12 md:h-16 w-auto object-contain"
             />

@@ -20,7 +20,7 @@ const About: React.FC = () => {
             
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-800">
               <img 
-                src="../assets/self-picture.JPG" 
+                src="/assets/self-picture.jpg"
                 alt="Elisheva Lev portrait working on site" 
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
