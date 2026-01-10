@@ -8,9 +8,9 @@ const Hero: React.FC = () => {
       {/* Background with Parallax Feel */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://picsum.photos/1920/1080?grayscale&blur=2"
+          src="/assets/1.png"
           alt="Interior Design Construction Site"
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover "
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-50/80 via-transparent to-stone-50/90" />
       </div>
