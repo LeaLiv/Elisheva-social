@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, Instagram, ArrowLeft } from 'lucide-react';
+import { Phone, Mail, Instagram } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
@@ -12,68 +12,48 @@ const Contact: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+        <div className="max-w-4xl mx-auto bg-stone-900 rounded-3xl shadow-2xl overflow-hidden p-12 md:p-16 text-center text-white">
           
-          {/* Text Side */}
-          <div className="w-full md:w-2/5 bg-stone-900 text-white p-12 flex flex-col justify-between">
-            <div>
-              <h2 id="contact-title" className="text-3xl md:text-4xl font-bold mb-6">בואי נבנה לך נוכחות שאי אפשר להתעלם ממנה</h2>
-              <p className="text-stone-300 mb-12 text-lg">
-                וננהל אותה עבורך. שיחת התאמה קצרה לפרויקט הבא שלך - אני כאן כדי לגרום לזה לקרות.
-              </p>
-            </div>
-            
-            <div className="space-y-6">
-              <a href="tel:0502092507" className="flex items-center gap-4 text-lg hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
-                <div className="bg-stone-800 p-3 rounded-full"><Phone size={20} aria-hidden="true" /></div>
-                <span aria-label="Call 050-2092507">050-2092507</span>
-              </a>
-              <a href="mailto:social@elishevalev.co.il" className="flex items-center gap-4 text-lg hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
-                <div className="bg-stone-800 p-3 rounded-full"><Mail size={20} aria-hidden="true" /></div>
-                <span aria-label="Email social@elishevalev.co.il">social@elishevalev.co.il</span>
-              </a>
-              <a href="https://www.instagram.com/elisheva_lev_social" className="flex items-center gap-4 text-lg hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-2">
-                <div className="bg-stone-800 p-3 rounded-full"><Instagram size={20} aria-hidden="true" /></div>
-                <span>@elisheva_lev_social</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Form Side */}
-          <div className="w-full md:w-3/5 p-12">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-2">שם מלא</label>
-                  <input id="name" type="text" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="ישראל ישראלי" />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-stone-700 mb-2">טלפון</label>
-                  <input id="phone" type="tel" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="050-0000000" />
-                </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 id="contact-title" className="text-3xl md:text-5xl font-bold mb-6">בואו נבנה לכם נוכחות שאי אפשר להתעלם ממנה</h2>
+            <p className="text-stone-300 mb-12 text-lg md:text-xl max-w-2xl mx-auto">
+              וננהל אותה עבורכם. שיחת התאמה קצרה לפרויקט הבא שלכם - אני כאן כדי לגרום לזה לקרות.
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <a href="tel:0502092507" className="flex flex-col items-center gap-4 group">
+              <div className="bg-stone-800 p-6 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
+                <Phone size={32} aria-hidden="true" />
               </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">אימייל</label>
-                <input id="email" type="email" className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="your@email.com" />
-              </div>
+              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors" aria-label="Call 050-2092507">050-2092507</span>
+            </a>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-stone-700 mb-2">קצת על העסק שלך</label>
-                <textarea id="message" rows={4} className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all" placeholder="אני מעצבת פנים שמתמחה ב..."></textarea>
+            <a href="mailto:elishelev5@gmail.com" className="flex flex-col items-center gap-4 group">
+              <div className="bg-stone-800 p-6 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
+                <Mail size={32} aria-hidden="true" />
               </div>
+              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors" aria-label="Email elishelev5@gmail.com">elishelev5@gmail.com</span>
+            </a>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full py-4 bg-stone-900 text-white font-bold text-lg rounded-lg shadow-xl hover:bg-blue-500 transition-colors flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-blue-400"
-              >
-                <span>שלחי הודעה</span>
-                <ArrowLeft className="transform group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
-              </motion.button>
-            </form>
-          </div>
+            <a href="#" className="flex flex-col items-center gap-4 group">
+              <div className="bg-stone-800 p-6 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
+                <Instagram size={32} aria-hidden="true" />
+              </div>
+              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors">@elisheva_lev</span>
+            </a>
+          </motion.div>
+
         </div>
       </div>
     </section>

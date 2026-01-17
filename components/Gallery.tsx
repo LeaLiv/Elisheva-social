@@ -1,16 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { InstagramEmbed } from 'react-social-media-embed';
 
 const Gallery: React.FC = () => {
-  // כאן את שמה את הקישורים האמיתיים לרילס שלך באינסטגרם
-  const reels = [
-    "https://www.instagram.com/elisheva_lev_social/reel/DTVjdFwiLnd/", // הקישור ששלחת
-    "https://www.instagram.com/elisheva_lev_social/p/DTH_fvCiM4F/", // דוגמה - תחליפי בקישורים שלך
-    "https://www.instagram.com/elisheva_lev_social/reel/DS7UPVuCF90/", // דוגמה
-    "https://www.instagram.com/elisheva_lev_social/reel/DTDg9SaiPBl/", // דוגמה
-    "https://www.instagram.com/elisheva_lev_social/p/DTAdyNliOks/", // דוגמה
-    "https://www.instagram.com/elisheva_lev_social/reel/DR7mpDciKbK/", // דוגמה
+  const images = [
+    { url: "https://picsum.photos/400/600?random=10", size: "large" },
+    { url: "https://picsum.photos/400/300?random=11", size: "small" },
+    { url: "https://picsum.photos/400/400?random=12", size: "medium" },
+    { url: "https://picsum.photos/400/500?random=13", size: "large" },
+    { url: "https://picsum.photos/400/300?random=14", size: "small" },
+    { url: "https://picsum.photos/400/400?random=15", size: "medium" },
   ];
 
   return (
@@ -19,30 +17,27 @@ const Gallery: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">תוצאות מהשטח</h2>
           <p className="text-stone-400 max-w-2xl mx-auto">
-            הנה טעימה קטנה ממה שאנחנו יוצרות יחד. ויז'ואל שמספר סיפור, מושך את העין ומביא לקוחות.
+            הנה טעימה קטנה ממה שאנחנו יוצרים יחד. ויז'ואל שמספר סיפור, מושך את העין ומביא לקוחות.
           </p>
         </div>
 
-        {/* שימוש ב-Masonry Layout (טורים).
-            שימי לב ל-gap-6 ו-space-y-6 שיוצרים את הרווחים בין הרילס
-        */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          {reels.map((url, idx) => (
+          {images.map((img, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 50 }} // שיניתי ל-y כדי שזה יעלה מלמטה יפה
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className="break-inside-avoid relative rounded-xl overflow-hidden shadow-2xl border border-stone-800 bg-stone-800"
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="break-inside-avoid relative group overflow-hidden rounded-xl"
             >
-              {/* רכיב ההטמעה של אינסטגרם */}
-              <div className="flex justify-center">
-                <InstagramEmbed 
-                  url={url} 
-                  width="100%" 
-                  captioned={false} // true אם את רוצה להציג את הטקסט של הפוסט
-                />
+              <img 
+                src={img.url} 
+                alt="Gallery item" 
+                className="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="text-white border border-white px-6 py-2 rounded-full uppercase tracking-widest text-sm">View Project</span>
               </div>
             </motion.div>
           ))}

@@ -25,8 +25,9 @@ const Header: React.FC = () => {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-stone-900/90 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-6'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-stone-900/90 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-6'
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -35,11 +36,11 @@ const Header: React.FC = () => {
         {/* Logo Area */}
         <div className="flex-shrink-0">
           <a href="#" aria-label="Elisheva Lev Home" className="focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-1 block">
-            <img
-              src={isScrolled ? "/assets/logo.png" : "/assets/black-logo.png"}
-              alt="Elisheva Lev - Interior Design Social Media"
-              className="h-12 md:h-16 w-auto object-contain"
-            />
+             <img 
+               src="logo.png" 
+               alt="Elisheva Lev - Interior Design Social Media" 
+               className="h-12 md:h-16 w-auto object-contain"
+             />
           </a>
         </div>
 
@@ -49,8 +50,9 @@ const Header: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1 ${isScrolled ? 'text-stone-200' : 'text-stone-800'
-                }`}
+              className={`text-sm font-medium hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1 ${
+                isScrolled ? 'text-stone-200' : 'text-stone-800'
+              }`}
             >
               {link.name}
             </a>
@@ -59,15 +61,15 @@ const Header: React.FC = () => {
 
         {/* Action Icons */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="https://www.instagram.com/elisheva_lev_social"
+          <a 
+            href="#" 
             aria-label="Visit Instagram Profile"
             className={`hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
           >
             <Instagram size={20} aria-hidden="true" />
           </a>
-          <a
-            href="mailto:social@elishevalev.co.il"
+          <a 
+            href="mailto:elishevalev5@gmail.com" 
             aria-label="Send an Email"
             className={`hover:text-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-1 ${isScrolled ? 'text-white' : 'text-stone-900'}`}
           >
@@ -123,8 +125,8 @@ const Header: React.FC = () => {
             </nav>
 
             <div className="flex gap-6 mt-8">
-              <a href="https://www.instagram.com/elisheva_lev_social" aria-label="Instagram" className="text-stone-400 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"><Instagram size={28} aria-hidden="true" /></a>
-              <a href="#" aria-label="Email" className="text-stone-400 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"><Mail size={28} aria-hidden="true" /></a>
+               <a href="#" aria-label="Instagram" className="text-stone-400 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"><Instagram size={28} aria-hidden="true" /></a>
+               <a href="#" aria-label="Email" className="text-stone-400 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full p-2"><Mail size={28} aria-hidden="true" /></a>
             </div>
           </motion.div>
         )}

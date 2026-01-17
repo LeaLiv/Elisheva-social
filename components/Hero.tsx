@@ -8,9 +8,9 @@ const Hero: React.FC = () => {
       {/* Background with Parallax Feel */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/assets/1.png"
+          src="https://picsum.photos/1920/1080?grayscale&blur=2"
           alt="Interior Design Construction Site"
-          className="w-full h-full object-cover "
+          className="w-full h-full object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-50/80 via-transparent to-stone-50/90" />
       </div>
@@ -32,9 +32,9 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-4xl md:text-6xl lg:text-7xl font-display font-black text-stone-900 leading-tight mb-6"
         >
-          את עובדת קשה, יש לך <br />
+          פרויקט מדהים שנגמר בשטח <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-l from-stone-600 to-stone-900">
-            תוצאות מדהימות בשטח
+            הוא רק ההתחלה.
           </span>
         </motion.h1>
 
@@ -42,11 +42,10 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-xl md:text-2xl text-stone-600 font-light mb-10 max-w-3xl leading-relaxed"
+          className="text-xl md:text-2xl text-stone-600 font-light mb-10 max-w-4xl leading-relaxed"
         >
-          אבל אם את לא ברשת – את לא קיימת. הלקוחות שלך מחפשים אותך שם.
-          <br />
-          הגיע הזמן להפוך את העשייה היומיומית למותג מוביל ולנוכחות שאי אפשר להתעלם ממנה.
+          כדי להפוך למותג מוביל בעידן שבו אנשים מתחברים לאנשים,
+          אתם צריכים הרבה יותר מ'טיפים' או פוסטים מזדמנים – אלא נוכחות אותנטית שמשלבת בין המקצועיות חסרת הפשרות שלכם לבין הקול הייחודי שלכם!
         </motion.p>
 
         <motion.div
@@ -59,13 +58,13 @@ const Hero: React.FC = () => {
             href="#contact"
             className="px-8 py-4 bg-stone-900 text-white font-bold rounded-full hover:bg-blue-500 transition-colors duration-300 shadow-xl"
           >
-            בואי נדבר תכלס
+            בואו נדבר תכלס
           </a>
           <a
             href="#about"
             className="px-8 py-4 bg-white text-stone-900 border border-stone-200 font-bold rounded-full hover:bg-stone-100 transition-colors duration-300 shadow-md"
           >
-            הכירי אותי
+            הכירו אותי
           </a>
         </motion.div>
       </div>
