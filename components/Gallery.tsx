@@ -5,12 +5,12 @@ import { InstagramEmbed } from 'react-social-media-embed';
 const Gallery: React.FC = () => {
   // כאן את שמה את הקישורים האמיתיים לרילס שלך באינסטגרם
   const reels = [
-    "https://www.instagram.com/elisheva_lev_social/reel/DTVjdFwiLnd/", // הקישור ששלחת
-    "https://www.instagram.com/elisheva_lev_social/p/DTH_fvCiM4F/", // דוגמה - תחליפי בקישורים שלך
-    "https://www.instagram.com/elisheva_lev_social/reel/DS7UPVuCF90/", // דוגמה
-    "https://www.instagram.com/elisheva_lev_social/reel/DTDg9SaiPBl/", // דוגמה
-    "https://www.instagram.com/elisheva_lev_social/p/DTAdyNliOks/", // דוגמה
-    "https://www.instagram.com/elisheva_lev_social/reel/DR7mpDciKbK/", // דוגמה
+    "https://www.instagram.com/elisheva_lev_social/reel/DTVjdFwiLnd/",
+        "https://www.instagram.com/elisheva_lev_social/reel/DTDg9SaiPBl/", 
+    "https://www.instagram.com/elisheva_lev_social/reel/DS7UPVuCF90/", 
+    "https://www.instagram.com/elisheva_lev_social/p/DTH_fvCiM4F/",
+    "https://www.instagram.com/elisheva_lev_social/p/DTAdyNliOks/", 
+    "https://www.instagram.com/elisheva_lev_social/reel/DR7mpDciKbK/", 
   ];
 
   return (
