@@ -5,10 +5,14 @@ import { Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
 const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-24 bg-stone-100 relative overflow-hidden" aria-labelledby="contact-title">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] bg-blue-400/10 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-[0%] left-[0%] w-[30%] h-[30%] bg-stone-300/30 rounded-full blur-[80px]"></div>
+       {/* Background with Parallax Feel */}
+      <div className="absolute inset-0 z-0">
+         <img
+          src="/assets/contact.png"
+          alt="Interior Design Construction Site"
+          className="w-full h-full object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-50/80 via-transparent to-stone-50/90" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

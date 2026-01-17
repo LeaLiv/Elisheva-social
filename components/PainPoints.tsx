@@ -15,7 +15,7 @@ const PainPoints: React.FC = () => {
     {
       icon: <Layers size={40} aria-hidden="true" />,
       text: "לא רואים את התהליך והערך המטורף שעובר מפרויקט תכנון ועד גמר?"
-      
+
     },
     {
       icon: <HelpCircle size={40} aria-hidden="true" />,
@@ -25,7 +25,16 @@ const PainPoints: React.FC = () => {
 
   return (
     <section id="pain-points" className="py-24 bg-white relative" aria-labelledby="pain-points-title">
-      <div className="container mx-auto px-6">
+       {/* Background with Parallax Feel */}
+      <div className="absolute inset-0 z-0">
+         <img
+          src="/assets/pain-points.png"
+          alt="Interior Design Construction Site"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-50/80 via-transparent to-stone-50/90" />
+      </div>
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* Reality Check Section */}
         <motion.div

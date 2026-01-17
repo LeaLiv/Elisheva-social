@@ -61,6 +61,7 @@ const Process: React.FC = () => {
 
   return (
     <section id="process" className="py-24 bg-stone-50" aria-labelledby="process-title">
+      
       <div className="container mx-auto px-6">
 
         {/* Foundations Section */}
