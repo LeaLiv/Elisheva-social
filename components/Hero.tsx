@@ -7,10 +7,10 @@ const Hero: React.FC = () => {
     <section id="hero" className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Background with Parallax Feel */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://picsum.photos/1920/1080?grayscale&blur=2"
+         <img
+          src="/assets/1.png"
           alt="Interior Design Construction Site"
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover "
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-50/80 via-transparent to-stone-50/90" />
       </div>
@@ -44,8 +44,8 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-xl md:text-2xl text-stone-600 font-light mb-10 max-w-4xl leading-relaxed"
         >
-          כדי להפוך למותג מוביל בעידן שבו אנשים מתחברים לאנשים,
-          אתם צריכים הרבה יותר מ'טיפים' או פוסטים מזדמנים – אלא נוכחות אותנטית שמשלבת בין המקצועיות חסרת הפשרות שלכם לבין הקול הייחודי שלכם!
+          כדי להפוך למותג מוביל בעידן שבו אנשים מתחברים לאנשים,<br/>
+          אתם צריכים הרבה יותר מ'טיפים' או פוסטים מזדמנים - <br/>אלא נוכחות אותנטית שמשלבת בין המקצועיות חסרת הפשרות שלכם לבין הקול הייחודי שלכם!
         </motion.p>
 
         <motion.div

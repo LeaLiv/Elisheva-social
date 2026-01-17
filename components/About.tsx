@@ -41,7 +41,7 @@ const About: React.FC = () => {
             
             <div className="space-y-6 text-lg text-stone-300 leading-relaxed font-light">
               <p className="text-xl font-medium text-white">
-                אני אלישבע – יוצרת תוכן וסושיאל לענף העיצוב והבנייה, ובעיקר מעצבת שמגיעה לתעד את השטח.
+                אני אלישבע - יוצרת תוכן וסושיאל לענף העיצוב והבנייה, ובעיקר מעצבת שמגיעה לתעד את השטח.
               </p>
               
               <p>
@@ -53,7 +53,7 @@ const About: React.FC = () => {
               </p>
 
               <p>
-                כי כשאתם חושפים את התהליך, את האמת ואת האדם שמאחורי העיצוב – נוצר אמון.
+                כי כשאתם חושפים את התהליך, את האמת ואת האדם שמאחורי העיצוב - נוצר אמון.
               </p>
 
               <p className="text-xl font-bold text-white pt-4 border-t border-stone-700">

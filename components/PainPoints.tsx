@@ -15,6 +15,7 @@ const PainPoints: React.FC = () => {
     {
       icon: <Layers size={40} aria-hidden="true" />,
       text: "לא רואים את התהליך והערך המטורף שעובר מפרויקט תכנון ועד גמר?"
+      
     },
     {
       icon: <HelpCircle size={40} aria-hidden="true" />,
@@ -39,7 +40,7 @@ const PainPoints: React.FC = () => {
           <p className="text-lg md:text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto">
             האינסטגרם הוא חלון הראווה שלכם,
             <br className="hidden md:block" />
-            ובלי נוכחות אותנטית שמבליטה את הייחודיות שלכם –
+            ובלי נוכחות אותנטית שמבליטה את הייחודיות שלכם -
             <br className="hidden md:block" />
             הלקוחות האידיאליים פשוט לא יראו אתכם.
           </p>
