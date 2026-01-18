@@ -8,19 +8,19 @@ const Process: React.FC = () => {
       title: "ויזואליה של מעצבים",
       desc: "לא סתם 'תיעוד', אלא צילום שמבין קומפוזיציה, חומר ואור ומחמיא לפרויקטים שלכם.",
       icon: <Camera size={32} />,
-      color: "bg-stone-50"
+      color: "bg-stone-50/90"
     },
     {
       title: "אסטרטגיה שמוכרת",
       desc: "אנחנו לא רודפים אחרי טרנדים, אלא בונים שפה שיווקית שמשדרת סמכות ומביאה לקוחות.",
       icon: <TrendingUp size={32} />,
-      color: "bg-white"
+      color: "bg-white/90"
     },
     {
       title: "האדם שבמרכז",
-      desc: "אנשים קונים מאנשים. אני אעזור לכם להרגיש בנוח מול המצלמה (כן, זה אפשרי!) ולהביא את האישיות הכובשת שלכם לקדמת הבמה. זה המרכיב הסודי שהופך עוקבים ללקוחות משלמים.",
+      desc: "אנשים קונים מאנשים. אני אעזור לכם להרגיש בנוח מול המצלמה (כן, זה אפשרי!) ולהביא את האישיות הכובשת שלכם לקדמת הבמה.",
       icon: <User size={32} />,
-      color: "bg-stone-50"
+      color: "bg-stone-50/90"
     }
   ];
 
@@ -37,18 +37,18 @@ const Process: React.FC = () => {
     },
     {
       title: "פיצוח ואסטרטגיה",
-      target: "למעצבים שרוצים לנהל את העמוד לבד, אבל חייבים תוכנית מדויקת וחומרים מקצועיים כדי שזה יעבוד. במסלול הזה אתם מקבלים את כל הכלים כדי לצאת לדרך:",
+      target: "למעצבים שרוצים לנהל את העמוד לבד, אבל חייבים תוכנית מדויקת וחומרים מקצועיים.",
       features: [
         "פיצוח ואסטרטגיה: פגישת אפיון הבידול הייחודי שלכם ובניית גאנט תוכן חודשי מסודר.",
         "יום צילום ותוכן: אני מגיעה לצלם ולביים, ומספקת לכם בנק סרטונים ותמונות שתואמים בדיוק לגאנט שבנינו.",
-        "ניהול עצמאי: אתם מקבלים ממני את התוכנית ואת התוכן הויזואלי - וההעלאה השוטפת (הביצוע) נשארת אצלכם."
+        "ניהול עצמאי: אתם מקבלים ממני את התוכנית ואת התוכן הויזואלי - וההעלאה השוטפת נשארת אצלכם."
       ],
       buttonText: "אני רוצה אסטרטגיה",
       isPrimary: true
     },
     {
       title: "ניהול סושיאל מלא",
-      target: "למעצבים שרוצים ראש שקט ומותג שמנוהל מא' ועד ת' בצורה מקצועית. במסלול הזה אני לוקחת את המושכות לידיים:",
+      target: "למעצבים שרוצים ראש שקט ומותג שמנוהל מא' ועד ת' בצורה מקצועית.",
       features: [
         "כל מה שיש במסלול הויזואלי +",
         "ניהול שוטף: בניית גאנט, כתיבת קאפשן (Text), העלאת פוסטים וניהול הסטורי.",
@@ -60,12 +60,22 @@ const Process: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-24 bg-stone-50" aria-labelledby="process-title">
+    <section id="process" aria-labelledby="process-title">
       
-      <div className="container mx-auto px-6">
+      {/* --- חלק 1: היסודות (Foundations) --- */}
+      <div className="relative py-24 overflow-hidden">
+        
+        {/* תמונת רקע לחלק הראשון */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/assets/process2.jpg" 
+            alt="Background Texture"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-stone-50/70" /> 
+        </div>
 
-        {/* Foundations Section */}
-        <div className="mb-32">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <motion.h2
               id="process-title"
@@ -120,9 +130,21 @@ const Process: React.FC = () => {
             <p className="text-2xl font-bold text-blue-600">אז איך מתרגמים את זה לעבודה?</p>
           </motion.div>
         </div>
+      </div>
 
-        {/* Tracks Section */}
-        <div id="services">
+      <div id="services" className="relative py-24 overflow-hidden">
+        
+        <div className="absolute inset-0 z-0">
+           <img
+            src="/assets/process.jpg" 
+            alt="Services Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-50/95 via-stone-50/80 to-stone-50/95" />
+        </div>
+
+        {/* תוכן חלק שני */}
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">בחרו את המסלול שלכם</h2>
             <p className="text-xl text-stone-500">שלושה דרכים להפוך כישרון לנוכחות דיגיטלית בולטת.</p>
@@ -136,7 +158,7 @@ const Process: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className={`rounded-3xl p-8 relative flex flex-col h-full border ${track.isPrimary ? 'bg-stone-900 text-white border-stone-900 shadow-2xl scale-105 z-10' : 'bg-white text-stone-900 border-stone-200 shadow-lg'}`}
+                className={`rounded-3xl p-8 relative flex flex-col h-full border ${track.isPrimary ? 'bg-stone-900 text-white border-stone-900 shadow-2xl scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-stone-900 border-stone-200 shadow-lg'}`}
               >
                 {track.isPrimary && (
                   <div className="absolute top-0 right-0 left-0 -mt-4 flex justify-center">
@@ -167,9 +189,9 @@ const Process: React.FC = () => {
                 <a
                   href="#contact"
                   className={`w-full py-4 rounded-xl font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 group ${track.isPrimary
-                      ? 'bg-blue-500 hover:bg-blue-600 text-white'
-                      : 'bg-stone-100 hover:bg-stone-200 text-stone-900'
-                    }`}
+                    ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                    : 'bg-stone-100 hover:bg-stone-200 text-stone-900'
+                  }`}
                 >
                   {track.buttonText}
                   <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
@@ -178,8 +200,8 @@ const Process: React.FC = () => {
             ))}
           </div>
         </div>
-
       </div>
+
     </section>
   );
 };
