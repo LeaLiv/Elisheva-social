@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const About: React.FC = () => {
+interface AboutProps {
+  content: {
+    title: string;
+    text: React.ReactNode;
+  };
+}
+
+const About: React.FC<AboutProps> = ({ content }) => {
   return (
     <section id="about" className="py-24 bg-stone-900 text-white overflow-hidden" aria-labelledby="about-title">
       <div className="container mx-auto px-6">
@@ -37,28 +44,12 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 id="about-title" className="text-blue-500 font-bold tracking-widest uppercase mb-6 text-xl">כאן אני נכנסת לתמונה</h2>
+            <h2 id="about-title" className="text-blue-500 font-bold tracking-widest uppercase mb-6 text-xl">
+              {content.title}
+            </h2>
             
             <div className="space-y-6 text-lg text-stone-300 leading-relaxed font-light">
-              <p className="text-xl font-medium text-white">
-                אני אלישבע - יוצרת תוכן וסושיאל לענף העיצוב והבנייה, ובעיקר מעצבת שמגיעה לתעד את השטח.
-              </p>
-              
-              <p>
-                המומחיות שלי היא לקחת את מה שקורה אצלכם בתהליך,
-                <br />
-                בסטודיו או בשיחות עם הלקוחות,
-                <br />
-                ולתרגם את זה לשפה דיגיטלית חיה.
-              </p>
-
-              <p>
-                כי כשאתם חושפים את התהליך, את האמת ואת האדם שמאחורי העיצוב - נוצר אמון.
-              </p>
-
-              <p className="text-xl font-bold text-white pt-4 border-t border-stone-700">
-                אני כאן כדי לתת לכם את הבידול המדויק שלכם.
-              </p>
+              {content.text}
             </div>
           </motion.div>
 

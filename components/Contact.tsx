@@ -2,7 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  content: {
+    title: string;
+    description: string;
+  };
+}
+
+const Contact: React.FC<ContactProps> = ({ content }) => {
   return (
     <section id="contact" className="py-24 bg-stone-100 relative overflow-hidden" aria-labelledby="contact-title">
        {/* Background with Parallax Feel */}
@@ -23,10 +30,9 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 id="contact-title" className="text-3xl md:text-5xl font-bold mb-6">הגיע הזמן שהסושיאל שלכם יהיה מדויק כמו העיצובים שלכם
-            </h2>
+            <h2 id="contact-title" className="text-3xl md:text-5xl font-bold mb-6">{content.title}</h2>
             <p className="text-stone-300 mb-12 text-lg md:text-xl max-w-2xl mx-auto">
-              שיחת התאמה קצרה לפרויקט הבא שלכם - אני כאן כדי לגרום לזה לקרות.
+              {content.description}
             </p>
           </motion.div>
 

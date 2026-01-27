@@ -96,10 +96,18 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-stone-900 z-50 flex flex-col items-center justify-center space-y-8"
-            role="dialog"
+            className="fixed inset-0 bg-stone-900 z-[60] flex flex-col items-center justify-center space-y-8" role="dialog"
             aria-modal="true"
             aria-label="Mobile Menu"
+            style={{ 
+              backgroundColor: '#0d0b0bdc',
+              zIndex: 9999,
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100vh'
+            }}
           >
             <button
               onClick={() => setMobileMenuOpen(false)}

@@ -1,64 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, TrendingUp, User, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Camera, TrendingUp, User, CheckCircle, ArrowLeft, Check } from 'lucide-react';
 
-const Process: React.FC = () => {
-  const foundations = [
-    {
-      title: "ויזואליה של מעצבים",
-      desc: "לא סתם 'תיעוד', אלא צילום שמבין קומפוזיציה, חומר ואור ומחמיא לפרויקטים שלכם.",
-      icon: <Camera size={32} />,
-      color: "bg-stone-50/90"
-    },
-    {
-      title: "אסטרטגיה שמוכרת",
-      desc: "אנחנו לא רודפים אחרי טרנדים, אלא בונים שפה שיווקית שמשדרת סמכות ומביאה לקוחות.",
-      icon: <TrendingUp size={32} />,
-      color: "bg-white/90"
-    },
-    {
-      title: "האדם שבמרכז",
-      desc: "אנשים קונים מאנשים. אני אעזור לכם להרגיש בנוח מול המצלמה (כן, זה אפשרי!) ולהביא את האישיות הכובשת שלכם לקדמת הבמה.",
-      icon: <User size={32} />,
-      color: "bg-stone-50/90"
-    }
-  ];
+interface FoundationItem {
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  color: string;
+  subtitle?: string;
+  features?: string[];
+}
 
-  const tracks = [
-    {
-      title: "הבוסט הויזואלי",
-      target: "למעצבים שמנהלים לבד, אבל חייבים חומרים ברמה של מגזין.",
-      features: [
-        "יום צילום בשטח: בימוי והעמדה בפרויקט גמר או בסטודיו.",
-        "תוצרים ערוכים: בנק סרטונים (Reels) ותמונות אווירה מוכנים לשימוש מיידי."
-      ],
-      buttonText: "תאמי לי יום צילום",
-      isPrimary: false
-    },
-    {
-      title: "פיצוח ואסטרטגיה",
-      target: "למעצבים שרוצים לנהל את העמוד לבד, אבל חייבים תוכנית מדויקת וחומרים מקצועיים.",
-      features: [
-        "פיצוח ואסטרטגיה: פגישת אפיון הבידול הייחודי שלכם ובניית גאנט תוכן חודשי מסודר.",
-        "יום צילום ותוכן: אני מגיעה לצלם ולביים, ומספקת לכם בנק סרטונים ותמונות שתואמים בדיוק לגאנט שבנינו.",
-        "ניהול עצמאי: אתם מקבלים ממני את התוכנית ואת התוכן הויזואלי - וההעלאה השוטפת נשארת אצלכם."
-      ],
-      buttonText: "אני רוצה אסטרטגיה",
-      isPrimary: true
-    },
-    {
-      title: "ניהול סושיאל מלא",
-      target: "למעצבים שרוצים ראש שקט ומותג שמנוהל מא' ועד ת' בצורה מקצועית.",
-      features: [
-        "כל מה שיש במסלול הויזואלי +",
-        "ניהול שוטף: בניית גאנט, כתיבת קאפשן (Text), העלאת פוסטים וניהול הסטורי.",
-        "נוכחות עקבית: אני דואגת שהעמוד שלכם יהיה פעיל, חי וממיר, בזמן שאתם מתרכזים בעיצוב."
-      ],
-      buttonText: "קחי את המושכות, בואי נדבר",
-      isPrimary: false
-    }
-  ];
+type FeatureItem = string | { title: string; desc: string };
 
+interface TrackItem {
+  title: string;
+  target: string;
+  features: FeatureItem[]; 
+  buttonText: string;
+  isPrimary: boolean;
+}
+
+interface ProcessProps {
+  content: {
+    foundationsTitle: string;
+    foundationsDesc: string;
+    foundations: FoundationItem[];
+    tracksTitle: string;
+    tracksDesc: string;
+    tracks: TrackItem[];
+  };
+}
+
+const Process: React.FC<ProcessProps> = ({ content }) => {
   return (
     <section id="process" aria-labelledby="process-title">
       
@@ -84,7 +58,7 @@ const Process: React.FC = () => {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-display font-black text-stone-900 mb-6"
             >
-              בונים מותג, לא רק פיד.
+              {content.foundationsTitle}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -93,12 +67,12 @@ const Process: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="text-xl text-stone-600"
             >
-              בדיוק כמו בתוכנית אדריכלית, שבה ההצלחה טמונה בפרטים הקטנים -<br/> מודל הנוכחות הדיגיטלית נשען על שלושה יסודות:
+              {content.foundationsDesc}
             </motion.p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {foundations.map((item, idx) => (
+            {content.foundations.map((item, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
@@ -112,10 +86,24 @@ const Process: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-2 text-stone-900">
                   {item.title}
+                  {item.subtitle && <span className="block text-base font-normal text-stone-500 mt-1">{item.subtitle}</span>}
                 </h3>
                 <p className="text-stone-600 leading-relaxed mt-4">
                   {item.desc}
                 </p>
+                {item.features && item.features.length > 0 && (
+                  <ul className="mt-6 space-y-3 border-t border-stone-300/30 pt-4">
+                    {item.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-3">
+                        <div className="mt-1 flex-shrink-0 text-stone-900">
+                          {/* אייקון V קטן ועדין */}
+                          <Check size={16} strokeWidth={3} />
+                        </div>
+                        <span className="text-sm font-medium text-stone-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
             ))}
           </div>
@@ -146,12 +134,12 @@ const Process: React.FC = () => {
         {/* תוכן חלק שני */}
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">בחרו את המסלול שלכם</h2>
-            <p className="text-xl text-stone-500">שלושה דרכים להפוך כישרון לנוכחות דיגיטלית בולטת.</p>
+             <h2 className="text-3xl md:text-5xl font-bold mb-4">{content.tracksTitle}</h2>
+             <p className="text-xl text-stone-500">{content.tracksDesc}</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            {tracks.map((track, idx) => (
+          <div className={`grid grid-cols-1 md:grid-cols-2 ${content.tracks.length > 3 ? 'xl:grid-cols-4' : 'lg:grid-cols-3'} gap-6 items-start`}>
+            {content.tracks.map((track, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 40 }}
@@ -179,9 +167,22 @@ const Process: React.FC = () => {
                       <div className={`mt-1 flex-shrink-0 ${track.isPrimary ? 'text-blue-400' : 'text-blue-500'}`}>
                         <CheckCircle size={18} />
                       </div>
-                      <p className={`text-sm leading-relaxed ${track.isPrimary ? 'text-stone-300' : 'text-stone-600'}`}>
-                        {feature}
-                      </p>
+                      <div>
+                        {typeof feature === 'string' ? (
+                          <p className={`text-sm leading-relaxed ${track.isPrimary ? 'text-stone-300' : 'text-stone-600'}`}>
+                            {feature}
+                          </p>
+                        ) : (
+                          <>
+                            <h4 className={`font-bold leading-tight ${track.isPrimary ? 'text-white' : 'text-stone-900'}`}>
+                              {feature.title}
+                            </h4>
+                            <p className={`text-sm leading-relaxed mt-1 ${track.isPrimary ? 'text-stone-300' : 'text-stone-600'}`}>
+                              {feature.desc}
+                            </p>
+                          </>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>

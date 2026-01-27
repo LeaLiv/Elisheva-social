@@ -2,7 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { InstagramEmbed } from 'react-social-media-embed';
 
-const Gallery: React.FC = () => {
+interface GalleryProps {
+  content: {
+    title: string;
+    description: React.ReactNode;
+  };
+}
+
+
+const Gallery: React.FC<GalleryProps> = ({ content }) => {
   // כאן את שמה את הקישורים האמיתיים לרילס שלך באינסטגרם
   const reels = [
     "https://www.instagram.com/reel/DTdsBmFiLp7/?igsh=MWhraWY3OHoxNnZwOA==",
@@ -21,10 +29,10 @@ const Gallery: React.FC = () => {
     <section id="gallery" className="py-24 bg-stone-900 text-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">תוצאות מהשטח</h2>
-          <p className="text-stone-400 max-w-2xl mx-auto">
-            הנה טעימה קטנה ממה שאנחנו יוצרים יחד. ויז'ואל שמספר סיפור, מושך את העין ומביא לקוחות.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">{content.title}</h2>
+          <div className="text-stone-400 max-w-3xl mx-auto text-lg">
+            {content.description}
+          </div>
         </div>
 
         {/* שימוש ב-Masonry Layout (טורים).

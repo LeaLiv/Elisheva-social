@@ -2,27 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Layout, Layers, HelpCircle } from 'lucide-react';
 
-const PainPoints: React.FC = () => {
-  const points = [
-    {
-      icon: <Clock size={40} aria-hidden="true" />,
-      text: "אין לכם זמן לצלם?"
-    },
-    {
-      icon: <Layout size={40} aria-hidden="true" />,
-      text: "פוסטים מעוצבים מדי לא מייצגים את מי שאתם?"
-    },
-    {
-      icon: <Layers size={40} aria-hidden="true" />,
-      text: "לא רואים את התהליך והערך המטורף שעובר מפרויקט תכנון ועד גמר?"
+interface PainPoint {
+  icon: React.ReactNode;
+  text: string;
+}
 
-    },
-    {
-      icon: <HelpCircle size={40} aria-hidden="true" />,
-      text: "ואיך הופכים את הכל לתוכן שמוכר בלי להרגיש מוזר?"
-    }
-  ];
+interface PainPointsProps {
+  content: {
+    title: string;
+    subtitle: string;
+    description: React.ReactNode;
+    points: PainPoint[];
+  };
+}
 
+const PainPoints: React.FC<PainPointsProps> = ({ content }) => {
   return (
     <section id="pain-points" className="py-24 bg-white relative" aria-labelledby="pain-points-title">
        {/* Background with Parallax Feel */}
@@ -44,15 +38,11 @@ const PainPoints: React.FC = () => {
           className="max-w-4xl mx-auto text-center mb-20 space-y-6"
         >
           <h2 id="pain-points-title" className="text-3xl md:text-5xl font-display font-black text-stone-900 leading-tight">
-            בואו נודה על האמת
+            {content.title}
           </h2>
-          <p className="text-lg md:text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto">
-            האינסטגרם הוא חלון הראווה שלכם,
-            <br className="hidden md:block" />
-            ובלי נוכחות אותנטית שמבליטה את הייחודיות שלכם -
-            <br className="hidden md:block" />
-            הלקוחות האידיאליים פשוט לא יראו אתכם.
-          </p>
+          <div className="text-lg md:text-xl text-stone-600 leading-relaxed max-w-3xl mx-auto">
+            {content.description}
+          </div>
         </motion.div>
 
         <motion.div
@@ -61,11 +51,11 @@ const PainPoints: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h3 className="text-2xl font-bold text-blue-600">אתם מבינים שאתם חייבים להיות שם, אבל איך?!</h3>
+          <h3 className="text-2xl font-bold text-blue-600">{content.subtitle}</h3>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {points.map((point, index) => (
+          {content.points.map((point, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
