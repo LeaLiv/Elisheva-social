@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BusinessPage from './components/BusinessLanding/BusinessPage'; // Import the new page
 import { homeContent } from './content'; // We only need homeContent for the main route now
+import NotFound from './components/NotFound';
 
 // Scroll to top component
 const ScrollToTop = () => {
@@ -49,6 +50,7 @@ function App() {
             <Route path="/" element={<LandingPage content={homeContent} />} />
             {/* Updated Route to use the new dedicated component */}
             <Route path="/business" element={<BusinessPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
