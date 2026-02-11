@@ -2,28 +2,26 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { InstagramEmbed } from 'react-social-media-embed';
 
+// הגדרת הטיפוסים (Types)
+type MediaType = 'instagram' | 'video';
+
+interface GalleryItem {
+  type: MediaType;
+  url: string;
+  poster?: string;
+}
+
 interface GalleryProps {
   content: {
     title: string;
     description: React.ReactNode;
+    items: GalleryItem[]; // 👈 הוספנו את זה כאן
   };
 }
 
-
 const Gallery: React.FC<GalleryProps> = ({ content }) => {
-  // כאן את שמה את הקישורים האמיתיים לרילס שלך באינסטגרם
-  const reels = [
-    "https://www.instagram.com/reel/DTdsBmFiLp7/?igsh=MWhraWY3OHoxNnZwOA==",
-    "https://www.instagram.com/reel/DTNGwAcivLL/?igsh=aGI2ZGxocHpyd2U1",
-    "https://www.instagram.com/reel/DTiH8QnCDSg/?igsh=MWJ0aHMyb3ZsdG9jZQ==",
-    "https://www.instagram.com/p/DTaDp8ZiBDp/?igsh=bDZpajU2bnh6ZThz",
-    "https://www.instagram.com/reel/DTnlLzJCB4F/?igsh=dzZqaDBsMHZ1aXFh",
-    "https://www.instagram.com/reel/DTDg9SaiPBl/?igsh=MXFocDd3ejk2cXN4eQ==",
-    // "https://www.instagram.com/elisheva_lev_social/reel/DS7UPVuCF90/", 
-    // "https://www.instagram.com/elisheva_lev_social/p/DTH_fvCiM4F/",
-    // "https://www.instagram.com/elisheva_lev_social/p/DTAdyNliOks/", 
-    // "https://www.instagram.com/elisheva_lev_social/reel/DR7mpDciKbK/", 
-  ];
+  // מחקנו את המערך הקבוע שהיה כאן (const reels = ...)
+  // עכשיו משתמשים ישירות ב-content.items
 
   return (
     <section id="gallery" className="py-24 bg-stone-900 text-white">
@@ -35,26 +33,36 @@ const Gallery: React.FC<GalleryProps> = ({ content }) => {
           </div>
         </div>
 
-        {/* שימוש ב-Masonry Layout (טורים).
-            שימי לב ל-gap-6 ו-space-y-6 שיוצרים את הרווחים בין הרילס
-        */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-          {reels.map((url, idx) => (
+          {content.items.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 50 }} // שיניתי ל-y כדי שזה יעלה מלמטה יפה
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className="break-inside-avoid relative rounded-xl overflow-hidden shadow-2xl border border-stone-800 bg-stone-800"
-            >
-              {/* רכיב ההטמעה של אינסטגרם */}
-              <div className="flex justify-center">
-                <InstagramEmbed
-                  url={url}
-                  width="100%"
-                  captioned={false} // true אם את רוצה להציג את הטקסט של הפוסט
-                />
+              className="break-inside-avoid relative rounded-xl overflow-hidden shadow-2xl" >
+              <div className="relative w-full aspect-[9/16] max-h-[600px] overflow-hidden">
+
+                {item.type === 'instagram' ? (
+                  <InstagramEmbed
+                    url={item.url}
+                    width="100%"
+                    captioned={false}
+                  />
+                ) : (
+                  <video
+                    controls
+                    playsInline
+                    poster={item.poster}
+                    className="w-full h-auto object-cover rounded-xl aspect-[9/16]"
+                    style={{ maxHeight: '600px', backgroundColor: '#000'}}
+                  >
+                    <source src={item.url} type="video/mp4" />
+                    הדפדפן שלך לא תומך בתגית וידאו.
+                  </video>
+                )}
+
               </div>
             </motion.div>
           ))}

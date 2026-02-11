@@ -7,6 +7,7 @@ import Testimonials from './sections/Testimonials';
 import { Clock, HelpCircle, Layers, Layout } from 'lucide-react';
 import PainPoints from '../PainPoints';
 import Process from '../Process';
+import Gallery from '../Gallery';
 
 const BusinessPage: React.FC = () => {
   console.log(`in bussines page`);
@@ -70,6 +71,20 @@ const BusinessPage: React.FC = () => {
       { icon: <Layout size={40} />, text: "מרגישים שפוסטים מעוצבים מדי לא מייצגים את מי שאתם באמת?" },
       { icon: <Layers size={40} />, text: "הלקוחות לא רואים את הערך המיוחד שאתם נותנים?" },
       { icon: <HelpCircle size={40} />, text: "איך הופכים את כל העשייה הזו לתוכן שמוכר בלי להרגיש מוזר או \"מכירתי\" מדי?" }
+    ]
+  };
+  const galleryContent= {
+    title: "קצת מהקסם שקורה בשטח",
+    description: <>
+      לא משנה אם אתם בעלי עסקים, מעצבים או אדריכלים – איכות צילום ודיוק במסר הם שפה בינלאומית.
+      <br />
+      הנה הצצה לפרויקטים ולרגעים שתפסתי בעדשה.
+    </>,
+    // כאן את שמה סרטונים שונים שמתאימים לבעלי עסקים!
+    items: [
+        { type: 'video', url: "/assets/videos/business-intro.mp4", poster: "/assets/biz-cover.jpg" },
+        { type: 'instagram', url: "https://www.instagram.com/reel/DTnlLzJCB4F/?igsh=dzZqaDBsMHZ1aXFh" },
+        { type: 'instagram', url: "https://www.instagram.com/reel/DTDg9SaiPBl/?igsh=MXFocDd3ejk2cXN4eQ==" },
     ]
   };
   const proccessContent = {
@@ -185,7 +200,7 @@ tracks : [
       <PainPoints content={painPointsContent} />
       <About content={aboutContent} />
       <Process content={proccessContent} />
-      {/* <Services /> */}
+      <Gallery content={galleryContent} />
       <Testimonials />
       <Contact content={contactContent} />
     </div>

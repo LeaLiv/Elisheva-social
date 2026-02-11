@@ -96,13 +96,24 @@ export const homeContent = {
       }
     ]
   },
-  gallery: {
+ gallery: {
     title: "קצת מהקסם שקורה בשטח",
     description: <>
       לא משנה אם אתם בעלי עסקים מעצבים או אדריכלים – איכות צילום ודיוק במסר הם שפה בינלאומית.
       <br />
       הנה הצצה לפרויקטים ולרגעים שתפסתי בעדשה.
-    </>
+    </>,
+    items: [
+      { type: 'instagram', url: "https://www.instagram.com/reel/DTdsBmFiLp7/?igsh=MWhraWY3OHoxNnZwOA==" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DTNGwAcivLL/?igsh=aGI2ZGxocHpyd2U1" },
+      {type: 'video', url: "/assets/videos/number3.mov", poster: "/assets/cover3.jpeg" },
+      {type: 'video', url: "/assets/videos/number4.mov", poster: "/assets/cover4.jpeg" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DUds-v5CNFy/?igsh=NzJpZWk5ZWlsZDNp" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DTiH8QnCDSg/?igsh=MWJ0aHMyb3ZsdG9jZQ==" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DUYB3CVjVyU/?igsh=aGp4bmVxYWozZ3g3" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DTnlLzJCB4F/?igsh=dzZqaDBsMHZ1aXFh" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DUdsHVXDD5z/?igsh=MTk4MmN4NHg0ZGZpeA==" },
+    ]
   },
   contact: {
     title: "בואו נבנה לכם נוכחות שאי אפשר להתעלם ממנה",
@@ -218,7 +229,13 @@ export const businessContent = {
       לא משנה אם אתם בעלי עסקים, מעצבים או אדריכלים – איכות צילום ודיוק במסר הם שפה בינלאומית.
       <br />
       הנה הצצה לפרויקטים ולרגעים שתפסתי בעדשה.
-    </>
+    </>,
+    // כאן את שמה סרטונים שונים שמתאימים לבעלי עסקים!
+    items: [
+        { type: 'video', url: "/assets/business-intro.mp4", poster: "/assets/biz-cover.jpg" },
+        { type: 'instagram', url: "https://www.instagram.com/reel/DTnlLzJCB4F/?igsh=dzZqaDBsMHZ1aXFh" },
+        { type: 'instagram', url: "https://www.instagram.com/reel/DTDg9SaiPBl/?igsh=MXFocDd3ejk2cXN4eQ==" },
+    ]
   },
   contact: {
     title: "מוכנים להפסיק להתחבא מאחורי לוגו?",
