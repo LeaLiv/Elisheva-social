@@ -33,6 +33,59 @@ interface ProcessProps {
 }
 
 const Process: React.FC<ProcessProps> = ({ content }) => {
+  const recommendedTracks = content.tracks.filter(track => track.isPrimary);
+  const normalTracks = content.tracks.filter(track => !track.isPrimary);
+
+  const renderTrackCard = (track: TrackItem, idx: number) => (
+    <motion.div
+      key={idx}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.1 }}
+      className="rounded-3xl p-8 relative flex flex-col h-full bg-white/90 backdrop-blur-sm text-stone-900 border-stone-200 border shadow-lg"
+    >
+      <h3 className="text-2xl font-bold mb-4">{track.title}</h3>
+      <p className="mb-8 min-h-[80px] text-stone-600">
+        {track.target}
+      </p>
+
+      <div className="space-y-4 mb-8 flex-grow">
+        {track.features.map((feature, fIdx) => (
+          <div key={fIdx} className="flex gap-3 items-start">
+            <div className="mt-1 flex-shrink-0 text-blue-500">
+              <CheckCircle size={18} />
+            </div>
+            <div>
+              {typeof feature === 'string' ? (
+                <p className="text-sm leading-relaxed text-stone-600">
+                  {feature}
+                </p>
+              ) : (
+                <>
+                  <h4 className="font-bold leading-tight text-stone-900">
+                    {feature.title}
+                  </h4>
+                  <p className="text-sm leading-relaxed mt-1 text-stone-600">
+                    {feature.desc}
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <a
+        href="#contact"
+        className="w-full py-4 rounded-xl font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 group bg-stone-100 hover:bg-stone-200 text-stone-900"
+      >
+        {track.buttonText}
+        <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+      </a>
+    </motion.div>
+  );
+
   return (
     <section id="process" aria-labelledby="process-title">
       
@@ -138,67 +191,34 @@ const Process: React.FC<ProcessProps> = ({ content }) => {
              <p className="text-xl text-stone-500">{content.tracksDesc}</p>
           </div>
 
-          <div className={`grid grid-cols-1 md:grid-cols-2 ${content.tracks.length > 3 ? 'xl:grid-cols-4' : 'lg:grid-cols-3'} gap-6 items-start`}>
-            {content.tracks.map((track, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`rounded-3xl p-8 relative flex flex-col h-full border ${track.isPrimary ? 'bg-stone-900 text-white border-stone-900 shadow-2xl scale-105 z-10' : 'bg-white/90 backdrop-blur-sm text-stone-900 border-stone-200 shadow-lg'}`}
-              >
-                {track.isPrimary && (
-                  <div className="absolute top-0 right-0 left-0 -mt-4 flex justify-center">
-                    <span className="bg-blue-500 text-white text-xs font-bold uppercase tracking-widest py-1 px-4 rounded-full shadow-md">
-                      הכי מומלץ
-                    </span>
-                  </div>
-                )}
+          <div className="flex flex-col lg:flex-row gap-6 items-stretch justify-center">
+            {/* First normal track - left */}
+            {normalTracks.length > 0 && (
+              <div className="w-full lg:flex-[1_1_25%] min-w-0">
+                {renderTrackCard(normalTracks[0], 0)}
+              </div>
+            )}
 
-                <h3 className="text-2xl font-bold mb-4">{track.title}</h3>
-                <p className={`mb-8 min-h-[80px] ${track.isPrimary ? 'text-stone-300' : 'text-stone-600'}`}>
-                  {track.target}
-                </p>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                  {track.features.map((feature, fIdx) => (
-                    <div key={fIdx} className="flex gap-3 items-start">
-                      <div className={`mt-1 flex-shrink-0 ${track.isPrimary ? 'text-blue-400' : 'text-blue-500'}`}>
-                        <CheckCircle size={18} />
-                      </div>
-                      <div>
-                        {typeof feature === 'string' ? (
-                          <p className={`text-sm leading-relaxed ${track.isPrimary ? 'text-stone-300' : 'text-stone-600'}`}>
-                            {feature}
-                          </p>
-                        ) : (
-                          <>
-                            <h4 className={`font-bold leading-tight ${track.isPrimary ? 'text-white' : 'text-stone-900'}`}>
-                              {feature.title}
-                            </h4>
-                            <p className={`text-sm leading-relaxed mt-1 ${track.isPrimary ? 'text-stone-300' : 'text-stone-600'}`}>
-                              {feature.desc}
-                            </p>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+            {/* Recommended box - middle with column display */}
+            {recommendedTracks.length > 1 && (
+              <div className="w-full lg:flex-[2_1_50%] min-w-0 rounded-[2rem] border-2 border-cyan-600 bg-gradient-to-br from-slate-700 to-slate-800 p-6 flex flex-col">
+                <div className="mb-6 text-center">
+                  <span className="inline-flex items-center justify-center rounded-full bg-cyan-500/20 text-cyan-100 px-4 py-2 text-sm font-semibold tracking-tight">
+                    מומלצים במיוחד
+                  </span>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {recommendedTracks.map((track, idx) => renderTrackCard(track, idx))}
+                </div>
+              </div>
+            )}
 
-                <a
-                  href="#contact"
-                  className={`w-full py-4 rounded-xl font-bold text-center transition-all duration-300 flex items-center justify-center gap-2 group ${track.isPrimary
-                    ? 'bg-blue-500 hover:bg-blue-600 text-white'
-                    : 'bg-stone-100 hover:bg-stone-200 text-stone-900'
-                  }`}
-                >
-                  {track.buttonText}
-                  <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                </a>
-              </motion.div>
-            ))}
+            {/* Last normal track - right */}
+            {normalTracks.length > 1 && (
+              <div className="w-full lg:flex-[1_1_25%] min-w-0">
+                {renderTrackCard(normalTracks[1], 1)}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -71,7 +71,7 @@ export const homeContent = {
       }
     ],
     tracksTitle: "בחרו את המסלול שלכם",
-    tracksDesc: "שלושה דרכים להפוך כישרון לנוכחות דיגיטלית בולטת.",
+    tracksDesc: "ארבע דרכים להפוך כישרון לנוכחות דיגיטלית בולטת.",
     tracks: [
       {
         title: "הבוסט הויזואלי",
@@ -81,22 +81,44 @@ export const homeContent = {
         isPrimary: false
       },
       {
-        title: "פיצוח ואסטרטגיה",
-        target: "למעצבים שרוצים לנהל את העמוד לבד, אבל חייבים תוכנית מדויקת וחומרים מקצועיים כדי שזה יעבוד.",
-        features: ["פיצוח ואסטרטגיה: פגישת אפיון הבידול הייחודי שלכם ובניית גאנט תוכן חודשי מסודר.", "יום צילום ותוכן: אני מגיעה לצלם ולביים, ומספקת לכם בנק סרטונים ותמונות שתואמים בדיוק לגאנט שבנינו.", "ניהול עצמאי: אתם מקבלים ממני את התוכנית ואת התוכן הויזואלי - וההעלאה השוטפת נשארת אצלכם."],
+        title: "פיצוח מסרים ובניית תוכן",
+        target: "למעצבים שרוצים לנהל את העמוד לבד, אבל צריכים דיוק של המסר והשפה הוויזואלית כדי למשוך לקוחות.",
+        features: [
+          "זיקוק מסר ובניית תוכן: אפיון המסר הייחודי שלכם ותוכנית תוכן ממוקדת.",
+          "תסריטים ליום צילום: תכנון מדויק של כל סרטון כדי להגיע לצילום מוכנים וממוקדים.",
+          "צילום ועריכה: יום צילום מקצועי וחומרים ערוכים שמייצרים נוכחות איכותית.",
+          "ניהול עצמאי: אתם מקבלים את הכלים והחומרים, וכבר אתם יכולים לנהל את העמוד בעצמכם."
+        ],
         buttonText: "אני רוצה אסטרטגיה",
         isPrimary: true
       },
       {
-        title: "ניהול סושיאל מלא",
-        target: "למעצבים שרוצים ראש שקט ומותג שמנוהל מא' ועד ת' בצורה מקצועית.",
-        features: ["כל מה שיש במסלול הויזואלי +", "ניהול שוטף: בניית גאנט, כתיבת קאפשן (Text), העלאת פוסטים וניהול הסטורי.", "נוכחות עקבית: אני דואגת שהעמוד שלכם יהיה פעיל, חי וממיר, בזמן שאתם מתרכזים בעיצוב."],
-        buttonText: "קחי את המושכות, בואי נדבר",
+        title: "מנוכחות חלשה לנוכחות חזקה וקבועה באינסטגרם – ליווי צמוד ל-3 חודשים",
+        target: "מעצבים שרוצים ללמוד לנהל תוכן בצורה עקבית, מקצועית וממירה.",
+        features: [
+          "3 חודשים צמודים: פגישה 1 אסטרטגיה ובידול, פגישה 2 ניתוח ובנייה, ופגישה 3 סיכום והטמעה.",
+          "3 ימי צילום מקצועיים + תוכן מוכן לשימוש שתומך בגאנט החודשי.",
+          "בסוף: תהליך מסודר, תוכן איכותי וידע לנהל את העמוד בעצמכם."
+        ],
+        buttonText: "התחל ליווי",
+        isPrimary: true
+      },
+
+      {
+        title: "ניהול סושיאל מלא – מהחזון ועד לתוצאה בשטח",
+        target: "המסלול למעצבים שרוצים ראש שקט ומותג מנצח, בזמן שהם מתרכזים בתכנון ועיצוב.",
+        features: [
+          "אסטרטגיית מותג: הבידול שלכם, השפה הוויזואלית והתוכנית השיווקית שמייצרים מותג מנצח.",
+          "תכנון תוכן ותסריטים: זיקוק המסרים וכתיבת תסריטים מדויקים לכל סרטון כדי שכל פוסט יעבוד חזק.",
+          "צילום ועריכה מקצועיים: ימי צילום בשטח ותכנים מוכנים ל-Reels, סרטונים ארוכים ותמונות אווירה.",
+          "ניהול עקבי וממיר: פוסטים, סטוריז, קאפשנים וניהול אינטראקציה שמייצרים נוכחות פעילה."
+        ],
+        buttonText: "קחו את המושכות, בואו נדבר",
         isPrimary: false
       }
     ]
   },
- gallery: {
+  gallery: {
     title: "קצת מהקסם שקורה בשטח",
     description: <>
       לא משנה אם אתם בעלי עסקים מעצבים או אדריכלים – איכות צילום ודיוק במסר הם שפה בינלאומית.
@@ -105,14 +127,14 @@ export const homeContent = {
     </>,
     items: [
       { type: 'instagram', url: "https://www.instagram.com/reel/DTdsBmFiLp7/?igsh=MWhraWY3OHoxNnZwOA==" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DX2HfuMtAdW/?igsh=NHI0Nm95Y3FxYTZ4" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DVBsh_mjNi_/?igsh=Z2U5dGl1cWhvZW8w" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DTNGwAcivLL/?igsh=aGI2ZGxocHpyd2U1" },
-      {type: 'video', url: "/assets/videos/number3.mov", poster: "/assets/cover3.jpeg" },
-      {type: 'video', url: "/assets/videos/number4.mov", poster: "/assets/cover4.jpeg" },
-      { type: 'instagram', url: "https://www.instagram.com/reel/DUds-v5CNFy/?igsh=NzJpZWk5ZWlsZDNp" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DWb-jqFAtQt/?igsh=MXA1OW41aGx1Y3gwNg==" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DTiH8QnCDSg/?igsh=MWJ0aHMyb3ZsdG9jZQ==" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DUYB3CVjVyU/?igsh=aGp4bmVxYWozZ3g3" },
-      { type: 'instagram', url: "https://www.instagram.com/reel/DTnlLzJCB4F/?igsh=dzZqaDBsMHZ1aXFh" },
-      { type: 'instagram', url: "https://www.instagram.com/reel/DUdsHVXDD5z/?igsh=MTk4MmN4NHg0ZGZpeA==" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DXKDiBQCIfe/?igsh=Y21pMmpoM2R4MHBz" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DXtc2wGCOFG/?igsh=ZHg1Nm92ZjRhcDBr" },
     ]
   },
   contact: {
@@ -234,15 +256,15 @@ export const businessContent = {
       <br />
       הנה הצצה לפרויקטים ולרגעים שתפסתי בעדשה.
     </>,
-    // כאן את שמה סרטונים שונים שמתאימים לבעלי עסקים!
+    // כאן שמים סרטונים שונים שמתאימים לבעלי עסקים!
     items: [
-        { type: 'video', url: "/assets/business-intro.mp4", poster: "/assets/biz-cover.jpg" },
-        { type: 'instagram', url: "https://www.instagram.com/reel/DTnlLzJCB4F/?igsh=dzZqaDBsMHZ1aXFh" },
-        { type: 'instagram', url: "https://www.instagram.com/reel/DTDg9SaiPBl/?igsh=MXFocDd3ejk2cXN4eQ==" },
+      { type: 'video', url: "/assets/business-intro.mp4", poster: "/assets/biz-cover.jpg" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DTnlLzJCB4F/?igsh=dzZqaDBsMHZ1aXFh" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DTDg9SaiPBl/?igsh=MXFocDd3ejk2cXN4eQ==" },
     ]
   },
   contact: {
     title: "מוכנים להפסיק להתחבא מאחורי לוגו?",
-    description: "ולהתחיל להראות את העוצמה שלכם? בואו נהפוך את העשייה היומיומית שלכם למגנט של לקוחות. שיחת התאמה לעסק שלך:"
+    description: "ולהתחיל להראות את העוצמה שלכם? בואו נהפוך את העשייה היומיומית שלכם למגנט של לקוחות. שיחת התאמה לעסק שלכם:"
   }
 };
