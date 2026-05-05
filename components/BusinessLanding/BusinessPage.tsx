@@ -8,11 +8,9 @@ import { Clock, HelpCircle, Layers, Layout } from 'lucide-react';
 import PainPoints from '../PainPoints';
 import Process from '../Process';
 import Gallery from '../Gallery';
+import { businessContent } from '../../content';
 
 const BusinessPage: React.FC = () => {
-  console.log(`in bussines page`);
-
-
   // Specific content for the shared Hero component
   const heroContent = {
     title: <> מוצר מעולה או שירות מצוין <br /> <span className="text-transparent bg-clip-text bg-gradient-to-l from-stone-600 to-stone-900">הם רק ההתחלה.</span></>,
@@ -196,13 +194,13 @@ tracks : [
   };
   return (
     <div className="flex flex-col min-h-screen">
-      <Hero content={heroContent} />
-      <PainPoints content={painPointsContent} />
-      <About content={aboutContent} />
-      <Process content={proccessContent} />
-      <Gallery content={galleryContent} />
+      <Hero content={businessContent.hero} />
+      <PainPoints content={businessContent.painPoints} />
+      <About content={businessContent.about} />
+      <Process content={businessContent.process} />
+      <Gallery content={businessContent.gallery} />
       <Testimonials />
-      <Contact content={contactContent} />
+      <Contact content={businessContent.contact} />
     </div>
   );
 };
