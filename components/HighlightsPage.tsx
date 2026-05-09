@@ -10,9 +10,7 @@ interface Video {
 
 const HighlightsPage: React.FC = () => {
   const videos: Video[] = [
-    { id: 1, title: "סרטון 1", url: "/assets/videos/number3.mov" },
-    { id: 2, title: "סרטון 2", url: "/assets/videos/number4.mov" },
-    { id: 3, title: "סרטון 3", url: "/assets/videos/number9.mov" },
+    { id: 1, title: "סרטון 1", url: "/assets/videos/special.mov" },
   ];
 
   const [playingId, setPlayingId] = useState<number | null>(null);
