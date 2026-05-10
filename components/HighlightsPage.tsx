@@ -6,11 +6,15 @@ const HighlightsPage: React.FC = () => {
   const videos = [
     {
       videoUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/special_aetkae.mp4",
-      posterUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/special_aetkae.jpg"
+      posterUrl: "assets/first.jpeg"
     },
   {
       videoUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/v1778431795/copy_8D5DA5AE-4DA5-4990-84E4-460C5A2ED6D9_vqebpr.mov",
-      posterUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/v1778431795/copy_8D5DA5AE-4DA5-4990-84E4-460C5A2ED6D9_vqebpr.jpg"
+      posterUrl: "assets/second.jpeg"
+  },
+  {
+      videoUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/v1778433852/copy_DE450E0D-8FA8-4464-BE34-4A70A7516A05_compressed_zzslhg.mp4",
+      posterUrl: "assets/special.jpeg"
   }
   ];
 
