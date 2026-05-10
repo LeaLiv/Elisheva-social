@@ -3,6 +3,16 @@ import { motion } from 'framer-motion';
 import CloudinaryVideoPlayer from './CloudinaryVideoPlayer'; // הייבוא החדש
 
 const HighlightsPage: React.FC = () => {
+  const videos = [
+    {
+      videoUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/special_aetkae.mp4",
+      posterUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/special_aetkae.jpg"
+    },
+  {
+      videoUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/v1778431795/copy_8D5DA5AE-4DA5-4990-84E4-460C5A2ED6D9_vqebpr.mov",
+      posterUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/v1778431795/copy_8D5DA5AE-4DA5-4990-84E4-460C5A2ED6D9_vqebpr.jpg"
+  }
+  ];
 
   return (
     <div className="w-full min-h-screen bg-neutral-950 text-white flex flex-col items-center justify-start px-4 md:px-6 py-12 md:py-16">
@@ -24,12 +34,13 @@ const HighlightsPage: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         <div className="grid grid-cols-1 gap-6 md:gap-8 justify-items-center">
-          <CloudinaryVideoPlayer
-  // הוידאו המקורי שלך - באיכות מקסימלית וללא כיווץ
-  videoUrl="https://res.cloudinary.com/dlyno2hzj/video/upload/special_aetkae.mp4"
-  // נתיב לתמונה יפה של הציפורניים ששמרת בתיקיית public/images
-  posterUrl="https://res.cloudinary.com/dlyno2hzj/video/upload/special_aetkae.jpg" 
-/>
+          {videos.map((video, index) => (
+            <CloudinaryVideoPlayer
+              key={index}
+              videoUrl={video.videoUrl}
+              posterUrl={video.posterUrl}
+            />
+          ))}
         </div>
       </motion.div>
     </div>
