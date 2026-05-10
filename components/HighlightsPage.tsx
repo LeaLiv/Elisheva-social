@@ -26,9 +26,10 @@ const HighlightsPage: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 leading-tight">
-          סרטונים
-        </h1>
+        <h2 className="text-2xl md:text-5xl font-bold text-white mb-2 leading-tight">
+          המרחק זמני, האהבה שלנו לא.<br/>
+קצת מהסיפור שלנו:
+        </h2>
       </motion.div>
 
       <motion.div
