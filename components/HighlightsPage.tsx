@@ -5,7 +5,7 @@ import CloudinaryVideoPlayer from './CloudinaryVideoPlayer'; // הייבוא ה�
 const HighlightsPage: React.FC = () => {
   const videos = [
     {
-      videoUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/special_aetkae.mp4",
+      videoUrl: "https://res.cloudinary.com/dlyno2hzj/video/upload/v1778612375/copy_A418820B-5B2D-4707-9F04-04539B7FD069_lfmbdb.mov",
       posterUrl: "assets/first.jpeg"
     },
   {
