@@ -93,15 +93,15 @@ export const homeContent = {
         isPrimary: true
       },
       {
-        title: "מנוכחות חלשה לנוכחות חזקה וקבועה באינסטגרם – ליווי צמוד ל-3 חודשים",
-        target: "מעצבים שרוצים ללמוד לנהל תוכן בצורה עקבית, מקצועית וממירה.",
-        features: [
-          "3 חודשים צמודים: פגישה 1 אסטרטגיה ובידול, פגישה 2 ניתוח ובנייה, ופגישה 3 סיכום והטמעה.",
-          "3 ימי צילום מקצועיים + תוכן מוכן לשימוש שתומך בגאנט החודשי.",
-          "בסוף: תהליך מסודר, תוכן איכותי וידע לנהל את העמוד בעצמכם."
+        "title": "ליווי צילום ותוכן למעצבות ועסקים – משלב התכנון ועד החשיפה הסופית ברשת",
+        "target": "ליווי אישי למעצבות ובעלות עסקים שרוצות לתעד את הפרויקטים שלהן בצורה מקצועית, לבנות נוכחות חזקה באינסטגרם ולהפוך כל פרויקט לתוכן שמייצר אמון ולקוחות חדשים.",
+        "features": [
+          "מה כלול: ימי צילום לאורך הפרויקט, הכוונה מדויקת מה לתעד בכל שלב, רעיונות ותסריטים לתוכן וליווי אישי בוואטסאפ.",
+          "התוצאה: בניית נוכחות מקצועית ועקבית ברשת שמביאה לקוחות.",
+          "לבחירתכם: מסלול 3 ימי צילום לאורך הפרויקט OR מסלול 4 ימי צילום + פגישת אסטרטגיה לבניית תוכנית תוכן ושיווק מדויק."
         ],
-        buttonText: "התחל ליווי",
-        isPrimary: true
+        "buttonText": "התחל ליווי",
+        "isPrimary": true
       },
 
       {
@@ -129,11 +129,11 @@ export const homeContent = {
       { type: 'instagram', url: "https://www.instagram.com/reel/DTdsBmFiLp7/?igsh=MWhraWY3OHoxNnZwOA==" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DX2HfuMtAdW/?igsh=NHI0Nm95Y3FxYTZ4" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DVBsh_mjNi_/?igsh=Z2U5dGl1cWhvZW8w" },
-      { type: 'instagram', url: "https://www.instagram.com/reel/DTNGwAcivLL/?igsh=aGI2ZGxocHpyd2U1" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DYoOFpgOgjv/?igsh=MWwxdXYyNzhlbHFveA==" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DWb-jqFAtQt/?igsh=MXA1OW41aGx1Y3gwNg==" },
-      { type: 'instagram', url: "https://www.instagram.com/reel/DTiH8QnCDSg/?igsh=MWJ0aHMyb3ZsdG9jZQ==" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DZMWHk7qD3O/?igsh=cmtldWMzbzU5b3du" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DUYB3CVjVyU/?igsh=aGp4bmVxYWozZ3g3" },
-      { type: 'instagram', url: "https://www.instagram.com/reel/DXKDiBQCIfe/?igsh=Y21pMmpoM2R4MHBz" },
+      { type: 'instagram', url: "https://www.instagram.com/reel/DYIVo_ZoZ4V/?igsh=MWN2ZGJ4eGJqMHJhcg==" },
       { type: 'instagram', url: "https://www.instagram.com/reel/DXtc2wGCOFG/?igsh=ZHg1Nm92ZjRhcDBr" },
     ]
   },
