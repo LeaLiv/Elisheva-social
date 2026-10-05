@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { motion, animate, useMotionValue, useTransform, MotionValue } from 'framer-motion';
+import { ArrowLeft, CalendarDays, Camera, Instagram } from 'lucide-react';
 
 const WHATSAPP_URL =
   'https://api.whatsapp.com/send?phone=972502092507&text=%D7%94%D7%99%D7%99+%D7%90%D7%9C%D7%99%D7%A9%D7%91%D7%A2,+%D7%A8%D7%95%D7%A6%D7%94+%D7%9C%D7%91%D7%93%D7%95%D7%A7+%D7%90%D7%9D+%D7%94%D7%AA%D7%94%D7%9C%D7%99%D7%9A+%D7%9E%D7%AA%D7%90%D7%99%D7%9D+%D7%9C%D7%A2%D7%A1%D7%A7+%D7%A9%D7%9C%D7%99';
@@ -42,11 +42,56 @@ const fears = [
 ];
 
 const processSteps = [
-  { n: '01', title: 'אסטרטגיה', desc: 'נבין מי את, למי את רוצה להגיע, מה מייחד אותך ומה את רוצה למכור.' },
-  { n: '02', title: 'תוכן', desc: 'נהפוך את הידע, האישיות והפרויקטים שלך לתוכן שמייצר סמכות ומחבר אותך לקהל הנכון.' },
-  { n: '03', title: 'יום צילום', desc: 'ניצור יחד מאגר תוכן מקצועי שמתוכנן מראש בהתאם לאסטרטגיה שלך.' },
-  { n: '04', title: 'אינסטגרם', desc: 'נבנה נוכחות שמספרת את הסיפור של העסק שלך ומשקפת את הרמה שאליה את רוצה להגיע.' },
-  { n: '05', title: 'ליווי / ניהול', desc: 'בהתאם לצורך - הדרכה, ליווי או ניהול שוטף של הנוכחות הדיגיטלית.' },
+  {
+    n: '01',
+    title: 'פגישת אסטרטגיה',
+    desc: 'פגישת עומק אישית שבה נבין את העסק שלך, נדייק קהל יעד, שירותים, בידול, מסרים ונבנה יחד אסטרטגיית תוכן מותאמת.',
+    lead: 'בפגישה נעבוד על:',
+    points: [
+      'היכרות מעמיקה עם העסק',
+      'קהל היעד והלקוחה האידיאלית',
+      'השירותים והפרויקטים המרכזיים',
+      'הבידול והמסר השיווקי',
+      'עמודי התוכן וכיווני היצירה',
+    ],
+    note: 'כתיבת תסריטים ובניית יום צילום',
+    image: '/assets/landing/circle/5.png',
+    imageAlt: 'פגישת עבודה ותכנון אסטרטגי',
+    Icon: CalendarDays,
+  },
+  {
+    n: '02',
+    title: 'יום צילום + יצירת תוכן',
+    desc: 'יום צילום מתוכנן מראש, בהתאם לאסטרטגיה ולמטרות העסק, ליצירת מאגר תוכן איכותי, מקצועי ומדויק.',
+    lead: 'מה יוצא מיום הצילום?',
+    points: [
+      '6 רילסים ערוכים · שווי',
+      '3 פוסטים מעוצבים · שווי',
+      'חומרי גלם לשימוש עתידי',
+      'תמונות וקטעי וידאו נוספים לסטורי',
+      'תוכן מגוון שניתן להשתמש בו לאורך זמן',
+    ],
+    image: '/assets/landing/circle/3.png',
+    imageAlt: 'מצלמה על חצובה במהלך יום צילום',
+    Icon: Camera,
+  },
+  {
+    n: '03',
+    title: 'פגישת Instagram + גאנט תוכן',
+    desc: 'אחרי שיצרנו את התוכן, הופכים אותו לנוכחות ברורה ומסודרת בעמוד.',
+    lead: 'בפגישה נעבוד על:',
+    points: [
+      'מעבר על כל התכנים שיצרנו',
+      'סדר ונראות עמוד האינסטגרם',
+      'בניית גאנט תוכן חודשי',
+      'סדר פרסום ברור ומדויק',
+      'דיוק המסרים והכותרות',
+      'כיוון להמשך הפעילות בעמוד',
+    ],
+    image: '/assets/landing/circle/7.png',
+    imageAlt: 'תכנון וארגון תכנים לרשתות החברתיות',
+    Icon: Instagram,
+  },
 ];
 
 const stats = [
@@ -59,16 +104,49 @@ const stats = [
 const videoResults = Array.from({ length: 14 }, (_, i) => 101 + i);
 
 const circleItems = [
-  { image: '/assets/landing/circle/1.png', label: 'העסק הבסיס להכל', position: 'top-[4%] left-[40%]' },
-  { image: '/assets/landing/circle/2.png', label: 'הצילום', position: 'top-[29%] left-[10%]' },
-  { image: '/assets/landing/circle/3.png', label: 'התוכן', position: 'bottom-[5%] left-[39%]' },
-  { image: '/assets/landing/circle/4.png', label: 'האסטרטגיה', position: 'top-[29%] right-[10%]' },
-  { image: '/assets/landing/circle/5.png', label: 'הנוכחות שלך', position: 'top-[4%] right-[12%]' },
-  { image: '/assets/landing/circle/6.png', label: 'האישיות שלך', position: 'bottom-[28%] right-[10%]' },
-  { image: '/assets/landing/circle/7.png', label: 'החיבור', position: 'bottom-[28%] left-[11%]' },
+  { image: '/assets/landing/circle/1.png', label: 'העסק הבסיס להכל' },
+  { image: '/assets/landing/circle/2.png', label: 'הצילום' },
+  { image: '/assets/landing/circle/3.png', label: 'התוכן' },
+  { image: '/assets/landing/circle/4.png', label: 'האסטרטגיה' },
+  { image: '/assets/landing/circle/5.png', label: 'הנוכחות שלך' },
+  { image: '/assets/landing/circle/6.png', label: 'האישיות שלך' },
+  { image: '/assets/landing/circle/7.png', label: 'החיבור' },
 ];
 
-const CircleSection: React.FC = () => (
+const ORBIT_SECONDS = 30;
+
+// Sits at a fixed angle on the ring; counter-rotates against the orbit so it stays upright.
+const OrbitItem: React.FC<{
+  item: { image: string; label: string };
+  angle: number;
+  orbit: MotionValue<number>;
+}> = ({ item, angle, orbit }) => {
+  const upright = useTransform(orbit, (r) => -(r + angle));
+  return (
+    <div className="absolute inset-0" style={{ transform: `rotate(${angle}deg)` }}>
+      <motion.div
+        className="absolute left-1/2 top-0 flex w-28 flex-col items-center gap-2 text-center sm:w-36 md:w-44"
+        style={{ x: '-50%', y: '-50%', rotate: upright }}
+      >
+        <img
+          src={item.image}
+          alt={item.label}
+          className="h-16 w-16 rounded-full object-cover shadow-lg ring-4 ring-[#faf7f2]/80 sm:h-24 sm:w-24 md:h-32 md:w-32"
+        />
+        <span className="max-w-[130px] text-xs font-medium leading-tight text-[#1c1a17]/80 md:text-base">{item.label}</span>
+      </motion.div>
+    </div>
+  );
+};
+
+const CircleSection: React.FC = () => {
+  const orbit = useMotionValue(0);
+  useEffect(() => {
+    const controls = animate(orbit, 360, { duration: ORBIT_SECONDS, ease: 'linear', repeat: Infinity });
+    return () => controls.stop();
+  }, [orbit]);
+
+  return (
   <section id="system" className="relative overflow-hidden border-b border-black/10 bg-[#e8e1d8] px-6 py-24 md:px-16 md:py-32">
     <div aria-hidden="true" className="absolute inset-0 opacity-30 [background-image:radial-gradient(#8f8172_0.7px,transparent_0.7px)] [background-size:18px_18px]" />
     <div className="relative mx-auto max-w-6xl">
@@ -81,39 +159,36 @@ const CircleSection: React.FC = () => (
         </h2>
       </Reveal>
 
-      <div className="relative mx-auto mt-10 h-[760px] max-w-5xl md:mt-[-80px]">
-        <div className="absolute left-1/2 top-1/2 z-10 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#faf7f2]/90 p-5 text-center shadow-xl backdrop-blur-sm md:h-48 md:w-48">
-          <p className="font-display text-xl font-bold leading-tight md:text-2xl">הכל מתחבר<br />להצלחה שלך</p>
+      <div className="relative mx-auto mt-10 hidden aspect-square w-full max-w-[480px] md:block md:max-w-[640px]">
+        <div className="absolute left-1/2 top-1/2 z-10 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#faf7f2]/90 p-4 text-center shadow-xl backdrop-blur-sm md:h-48 md:w-48">
+          <p className="font-display text-lg font-bold leading-tight md:text-2xl">הכל מתחבר<br />להצלחה שלך</p>
         </div>
 
-        {circleItems.map((item, index) => (
-          <React.Fragment key={item.image}>
-            <motion.div
-              className={`absolute z-10 flex w-32 -translate-x-1/2 flex-col items-center gap-2 text-center sm:w-40 md:w-48 ${item.position}`}
-              animate={{ y: [0, index % 2 ? -8 : 8, 0], rotate: [index % 2 ? -2 : 2, index % 2 ? 2 : -2, index % 2 ? -2 : 2] }}
-              transition={{ duration: 4 + index * 0.3, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <img
-                src={item.image}
-                alt={item.label}
-                className="h-24 w-24 rounded-full object-cover shadow-lg ring-4 ring-[#faf7f2]/80 sm:h-32 sm:w-32 md:h-40 md:w-40"
-              />
-              <span className="max-w-[150px] text-sm font-medium leading-tight text-[#1c1a17]/80 md:text-base">{item.label}</span>
-            </motion.div>
-            <motion.div
-              aria-hidden="true"
-              className={`absolute z-0 text-4xl text-[#1c1a17]/80 ${index % 2 ? 'rotate-[-25deg]' : 'rotate-[25deg]'} ${index < 4 ? 'left-1/2 top-1/4' : 'left-1/2 bottom-1/4'}`}
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 2.5 + index * 0.2, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              {index % 3 === 0 ? '↗' : index % 3 === 1 ? '↘' : '↙'}
-            </motion.div>
-          </React.Fragment>
-        ))}
+        <div className="absolute inset-[14%]">
+          <div aria-hidden="true" className="absolute inset-0 rounded-full border border-dashed border-[#1c1a17]/25" />
+          <motion.div className="absolute inset-0" style={{ rotate: orbit }}>
+            {circleItems.map((item, index) => (
+              <OrbitItem key={item.image} item={item} angle={(360 / circleItems.length) * index} orbit={orbit} />
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-10 max-w-sm md:hidden">
+        <div className="relative">
+          <div aria-hidden="true" className="absolute bottom-7 left-1/2 top-7 w-px -translate-x-1/2 bg-black/15" />
+          {circleItems.map((item) => (
+            <Reveal key={item.image} y={16} className="relative flex flex-col items-center gap-2 py-3 text-center">
+              <img src={item.image} alt={item.label} className="z-10 h-36 w-36 flex-shrink-0 rounded-full border-4 border-[#e8e1d8] object-cover shadow-md" />
+              <span className="text-base font-medium text-[#1c1a17]/85">{item.label}</span>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 // A draggable, snap-scrolling filmstrip of scattered photos that float gently and straighten on hover.
 const ResultsCarousel: React.FC<{ items: number[] }> = ({ items }) => {
@@ -147,6 +222,18 @@ const ResultsCarousel: React.FC<{ items: number[] }> = ({ items }) => {
 const NewLandingPage: React.FC = () => {
   return (
     <div className="bg-[#faf7f2] text-[#1c1a17] font-sans" dir="rtl">
+      <a
+        href="#hero"
+        aria-label="Elisheva Lev Home"
+        className="fixed right-4 top-4 z-50 rounded-lg p-1 focus:outline-none focus:ring-2 focus:ring-[#a9781f] md:right-10 md:top-8"
+      >
+        <img
+          src="/assets/newLogo2.png"
+          alt="Elisheva Lev - Interior Design Social Media"
+          className="h-[68px] w-auto object-contain md:h-[92px]"
+        />
+      </a>
+
       {/* Ambient background glow */}
       <div aria-hidden="true" className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#a9781f]/10 blur-[120px]" />
@@ -234,7 +321,7 @@ const NewLandingPage: React.FC = () => {
                 <p className="font-bold">ולכן שיווק טוב למעצבת לא יכול להיות רק "עוד תוכן".</p>
                 <p>הוא צריך ליצור חיבור.</p>
                 <p className="mt-4 font-bold">אבל חיבור בלי אסטרטגיה לא מספיק.</p>
-                <p>צריך לבנות שיטה שבה הכול מתחבר למערכת אחת.</p>
+                <p>לכן בניתי שיטה שבה הכול מתחבר למערכת אחת.</p>
               </div>
             </Reveal>
           </div>
@@ -260,7 +347,7 @@ const NewLandingPage: React.FC = () => {
           </div>
         </section>
 
-        {/* 3 - Breaking the belief */}
+        {/* 3 - Breaking the belief
         <section id="belief" className="px-6 md:px-16 py-32 border-b border-black/10 flex justify-center">
           <div className="max-w-3xl text-center">
             <Reveal>
@@ -281,11 +368,12 @@ const NewLandingPage: React.FC = () => {
               </p>
             </Reveal>
           </div>
-        </section>
+        </section> */}
 
         {/* 4 - About Elisheva */}
-        <section id="about" className="px-6 md:px-16 py-28 border-b border-black/10">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
+        <section id="about" className="relative overflow-hidden px-6 md:px-16 py-28 border-b border-black/10">
+          <div aria-hidden="true" className="absolute inset-0 hidden bg-[url('/assets/aboutBG.png')] bg-cover bg-center md:block" />
+          <div className="relative max-w-6xl mx-auto grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
             <Reveal>
               <SectionNumber n="04" label="מי מובילה את זה" />
               <h2 className="text-3xl md:text-5xl font-display font-black mb-6">נעים מאוד, אני אלישבע.</h2>
@@ -303,43 +391,54 @@ const NewLandingPage: React.FC = () => {
                 <p className="text-[#1c1a17]/50">משם נבנה התהליך שלי.</p>
               </div>
             </Reveal>
-            <Reveal delay={0.2} className="relative">
-              <div className="absolute -inset-4 border border-[#79bddc9e] rounded-3xl -z-10" />
+            <Reveal delay={0.2} className="flex justify-center md:hidden">
               <img
-                src="/assets/self-picture.jpg"
+                src="/assets/elisheva.png"
                 alt="אלישבע לב"
-                className="w-full h-[420px] object-cover rounded-2xl"
+                className="h-auto max-h-[100vh] w-full max-w-[380px] object-contain"
               />
             </Reveal>
           </div>
         </section>
 
         {/* 5 - The Solution / Premium Process */}
-        <section id="process" className="px-6 md:px-16 py-28 border-b border-black/10">
-          <div className="max-w-6xl mx-auto">
-            <SectionNumber n="05" label="הפתרון" />
-            <Reveal className="max-w-3xl mb-16">
-              <h2 className="text-3xl md:text-5xl font-display font-black mb-4">תהליך שיווקי פרימיום למעצבות פנים</h2>
-              <p className="text-lg text-[#1c1a17]/70 font-light">
-                תהליך אישי שנבנה סביב העסק שלך - מהאסטרטגיה ועד לתוכן שעולה בפועל.
-              </p>
-            </Reveal>
-            <div className="relative">
-              <div className="absolute top-0 bottom-0 right-[27px] w-px bg-black/10 hidden md:block" />
-              <div className="space-y-10">
-                {processSteps.map((step, i) => (
-                  <Reveal key={step.n} delay={i * 0.08}>
-                    <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-10">
-                      <span className="font-display text-2xl text-[#79bddc9e] w-14 flex-shrink-0">{step.n}</span>
-                      <div className="border-t md:border-t-0 border-black/10 pt-4 md:pt-0">
-                        <h3 className="text-xl md:text-2xl font-bold mb-2">{step.title}</h3>
-                        <p className="text-[#1c1a17]/65 font-light max-w-xl">{step.desc}</p>
+        <section id="process" className="border-b border-black/10 bg-[#f4f0eb] px-6 py-16 md:px-16 md:py-20">
+          <div className="mx-auto max-w-5xl">
+            <div className="divide-y divide-[#1c1a17]/70">
+              {processSteps.map((step, i) => (
+                <Reveal key={step.n} delay={i * 0.08}>
+                  <article className="grid grid-cols-[minmax(0,1fr)_88px] items-center gap-x-4 gap-y-5 py-9 first:pt-0 last:pb-0 md:grid-cols-[minmax(0,1fr)_116px_minmax(0,1fr)] md:gap-x-7 md:py-10">
+                    <div className="text-right">
+                      <div className="mb-3 flex items-center gap-3">
+                        <span className="font-display text-4xl leading-none text-[#46382f] md:text-5xl">{step.n}</span>
+                        <span aria-hidden="true" className="h-5 w-px bg-[#1c1a17]" />
+                        <h3 className="text-base font-bold leading-snug md:text-lg">{step.title}</h3>
                       </div>
+                      <p className="text-sm leading-relaxed text-[#1c1a17]/80 md:text-base">{step.desc}</p>
                     </div>
-                  </Reveal>
-                ))}
-              </div>
+
+                    <div className="relative row-span-2 flex h-[88px] w-[88px] items-center justify-center md:row-span-1 md:h-[116px] md:w-[116px]">
+                      <img
+                        src={step.image}
+                        alt={step.imageAlt}
+                        className="h-full w-full rounded-full object-cover shadow-[0_12px_28px_rgba(28,26,23,0.18)]"
+                        loading="lazy"
+                      />
+                      <step.Icon aria-hidden="true" className="absolute -top-3 left-0 h-8 w-8 stroke-[1.5] text-[#9bc3de] drop-shadow-sm md:-top-4 md:-left-2 md:h-10 md:w-10" />
+                    </div>
+
+                    <div className="col-span-2 text-right md:col-span-1">
+                      <p className="mb-1 text-sm font-semibold md:text-base">{step.lead}</p>
+                      <ul className="list-inside list-disc space-y-0.5 text-sm leading-snug text-[#1c1a17]/85 md:text-base">
+                        {step.points.map((point) => <li key={point}>{point}</li>)}
+                      </ul>
+                      {step.note && <p className="mt-2 text-sm font-medium leading-snug md:text-base">{step.note}</p>}
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
             </div>
+            <p className="mt-10 text-center font-display text-lg text-[#46382f]/75 md:mt-12 md:text-xl">Elisheva Lev Social</p>
           </div>
         </section>
 
