@@ -46,15 +46,6 @@ const processSteps = [
     n: '01',
     title: 'פגישת אסטרטגיה',
     desc: 'פגישת עומק אישית שבה נבין את העסק שלך, נדייק קהל יעד, שירותים, בידול, מסרים ונבנה יחד אסטרטגיית תוכן מותאמת.',
-    lead: 'בפגישה נעבוד על:',
-    points: [
-      'היכרות מעמיקה עם העסק',
-      'קהל היעד והלקוחה האידיאלית',
-      'השירותים והפרויקטים המרכזיים',
-      'הבידול והמסר השיווקי',
-      'עמודי התוכן וכיווני היצירה',
-    ],
-    note: 'כתיבת תסריטים ובניית יום צילום',
     image: '/assets/landing/circle/5.png',
     imageAlt: 'פגישת עבודה ותכנון אסטרטגי',
     Icon: CalendarDays,
@@ -63,14 +54,6 @@ const processSteps = [
     n: '02',
     title: 'יום צילום + יצירת תוכן',
     desc: 'יום צילום מתוכנן מראש, בהתאם לאסטרטגיה ולמטרות העסק, ליצירת מאגר תוכן איכותי, מקצועי ומדויק.',
-    lead: 'מה יוצא מיום הצילום?',
-    points: [
-      '6 רילסים ערוכים · שווי',
-      '3 פוסטים מעוצבים · שווי',
-      'חומרי גלם לשימוש עתידי',
-      'תמונות וקטעי וידאו נוספים לסטורי',
-      'תוכן מגוון שניתן להשתמש בו לאורך זמן',
-    ],
     image: '/assets/landing/circle/3.png',
     imageAlt: 'מצלמה על חצובה במהלך יום צילום',
     Icon: Camera,
@@ -79,29 +62,16 @@ const processSteps = [
     n: '03',
     title: 'פגישת Instagram + גאנט תוכן',
     desc: 'אחרי שיצרנו את התוכן, הופכים אותו לנוכחות ברורה ומסודרת בעמוד.',
-    lead: 'בפגישה נעבוד על:',
-    points: [
-      'מעבר על כל התכנים שיצרנו',
-      'סדר ונראות עמוד האינסטגרם',
-      'בניית גאנט תוכן חודשי',
-      'סדר פרסום ברור ומדויק',
-      'דיוק המסרים והכותרות',
-      'כיוון להמשך הפעילות בעמוד',
-    ],
     image: '/assets/landing/circle/7.png',
     imageAlt: 'תכנון וארגון תכנים לרשתות החברתיות',
     Icon: Instagram,
   },
 ];
 
-const stats = [
-  { value: 'עשרות', label: 'פרויקטים' },
-  { value: '30+', label: 'מעצבות שעבדו איתי' },
-  { value: 'רבים', label: 'ימי צילום' },
-  { value: '100%', label: 'תוכן מותאם אישית' },
-];
-
 const videoResults = Array.from({ length: 14 }, (_, i) => 101 + i);
+
+const profilePictures = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 
 const circleItems = [
   { image: '/assets/landing/circle/1.png', label: 'העסק הבסיס להכל' },
@@ -190,16 +160,20 @@ const CircleSection: React.FC = () => {
   );
 };
 
-// A draggable, snap-scrolling filmstrip of scattered photos that float gently and straighten on hover.
+// An auto-scrolling marquee of scattered photos that float gently and straighten on hover (pauses on hover).
 const ResultsCarousel: React.FC<{ items: number[] }> = ({ items }) => {
   const tilts = ['-rotate-3', 'rotate-2', '-rotate-1', 'rotate-3', 'rotate-1', '-rotate-2', 'rotate-0'];
+  const loop = [...items, ...items];
   return (
-    <div>
-      <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-6 px-6 md:px-16 -mx-6 md:-mx-16 no-scrollbar cursor-grab active:cursor-grabbing">
-        {items.map((n, i) => (
+    <div dir="ltr" className="group -mx-6 overflow-hidden py-4 md:-mx-16">
+      <motion.div
+        className="flex w-max group-hover:[animation-play-state:paused]"
+        style={{ animation: `results-marquee ${items.length * 4}s linear infinite` }}
+      >
+        {loop.map((n, i) => (
           <motion.div
-            key={n}
-            className={`snap-center flex-shrink-0 w-40 sm:w-48 md:w-56 bg-white p-2 pb-3 rounded-2xl shadow-lg border border-black/5 transition-transform duration-300 hover:!rotate-0 hover:scale-105 hover:shadow-2xl ${tilts[i % tilts.length]}`}
+            key={i}
+            className={`mr-5 flex-shrink-0 w-40 sm:w-48 md:w-56 bg-white p-2 pb-3 rounded-2xl shadow-lg border border-black/5 transition-transform duration-300 hover:!rotate-0 hover:scale-105 hover:shadow-2xl ${tilts[i % tilts.length]}`}
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 3 + (i % 4) * 0.4, repeat: Infinity, ease: 'easeInOut', delay: (i % 5) * 0.25 }}
           >
@@ -213,12 +187,11 @@ const ResultsCarousel: React.FC<{ items: number[] }> = ({ items }) => {
             </div>
           </motion.div>
         ))}
-      </div>
-      <p className="text-center text-sm text-[#1c1a17]/40 mt-2">← גררי לצדדים לעוד תוצאות →</p>
+      </motion.div>
+      <style>{`@keyframes results-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
     </div>
   );
 };
-
 const NewLandingPage: React.FC = () => {
   return (
     <div className="bg-[#faf7f2] text-[#1c1a17] font-sans" dir="rtl">
@@ -371,13 +344,23 @@ const NewLandingPage: React.FC = () => {
         </section> */}
 
         {/* 4 - About Elisheva */}
-        <section id="about" className="relative overflow-hidden px-6 md:px-16 py-28 border-b border-black/10">
+        <section id="about" className="relative overflow-hidden px-6 md:px-16 py-28 md:min-h-screen md:flex md:items-center border-b border-black/10">
           <div aria-hidden="true" className="absolute inset-0 hidden bg-[url('/assets/aboutBG.png')] bg-cover bg-center md:block" />
-          <div className="relative max-w-6xl mx-auto grid md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
-            <Reveal>
+                    <div aria-hidden="true" className="absolute inset-0 hidden bg-white/45 md:block" />
+                    <motion.img
+                      src="/assets/elisheva.png"
+                      alt="אלישבע לב"
+                      initial={{ opacity: 0, x: -120 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.9, ease: 'easeOut' }}
+                      className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-auto max-w-[32%] object-contain object-bottom md:block"
+                    />
+                    <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center justify-center gap-10">
+                      <Reveal className="text-center">
               <SectionNumber n="04" label="מי מובילה את זה" />
               <h2 className="text-3xl md:text-5xl font-display font-black mb-6">נעים מאוד, אני אלישבע.</h2>
-              <div className="space-y-5 text-lg text-[#1c1a17]/75 font-light leading-relaxed">
+              <div className="space-y-5 text-lg text-center text-[#1c1a17]/75 font-light leading-relaxed">
                 <p>
                   בשנה האחרונה צילמתי עשרות פרויקטים, עבדתי לצד מעצבות, ישבתי איתן על העסק, זיקקתי אסטרטגיות, בניתי
                   תוכן והפכתי את העבודה שלהן לסיפור שאפשר לראות ולהרגיש בדיגיטל.
@@ -401,13 +384,15 @@ const NewLandingPage: React.FC = () => {
           </div>
         </section>
 
+        <CircleSection />
+
         {/* 5 - The Solution / Premium Process */}
         <section id="process" className="border-b border-black/10 bg-[#f4f0eb] px-6 py-16 md:px-16 md:py-20">
           <div className="mx-auto max-w-5xl">
             <div className="divide-y divide-[#1c1a17]/70">
               {processSteps.map((step, i) => (
                 <Reveal key={step.n} delay={i * 0.08}>
-                  <article className="grid grid-cols-[minmax(0,1fr)_88px] items-center gap-x-4 gap-y-5 py-9 first:pt-0 last:pb-0 md:grid-cols-[minmax(0,1fr)_116px_minmax(0,1fr)] md:gap-x-7 md:py-10">
+                  <article className="grid grid-cols-[minmax(0,1fr)_88px] items-center gap-x-4 py-8 md:grid-cols-[minmax(0,1fr)_116px] md:gap-x-8 md:py-10">
                     <div className="text-right">
                       <div className="mb-3 flex items-center gap-3">
                         <span className="font-display text-4xl leading-none text-[#46382f] md:text-5xl">{step.n}</span>
@@ -417,7 +402,7 @@ const NewLandingPage: React.FC = () => {
                       <p className="text-sm leading-relaxed text-[#1c1a17]/80 md:text-base">{step.desc}</p>
                     </div>
 
-                    <div className="relative row-span-2 flex h-[88px] w-[88px] items-center justify-center md:row-span-1 md:h-[116px] md:w-[116px]">
+                    <div className="relative flex h-[88px] w-[88px] items-center justify-center md:h-[116px] md:w-[116px]">
                       <img
                         src={step.image}
                         alt={step.imageAlt}
@@ -426,23 +411,12 @@ const NewLandingPage: React.FC = () => {
                       />
                       <step.Icon aria-hidden="true" className="absolute -top-3 left-0 h-8 w-8 stroke-[1.5] text-[#9bc3de] drop-shadow-sm md:-top-4 md:-left-2 md:h-10 md:w-10" />
                     </div>
-
-                    <div className="col-span-2 text-right md:col-span-1">
-                      <p className="mb-1 text-sm font-semibold md:text-base">{step.lead}</p>
-                      <ul className="list-inside list-disc space-y-0.5 text-sm leading-snug text-[#1c1a17]/85 md:text-base">
-                        {step.points.map((point) => <li key={point}>{point}</li>)}
-                      </ul>
-                      {step.note && <p className="mt-2 text-sm font-medium leading-snug md:text-base">{step.note}</p>}
-                    </div>
                   </article>
                 </Reveal>
               ))}
             </div>
-            <p className="mt-10 text-center font-display text-lg text-[#46382f]/75 md:mt-12 md:text-xl">Elisheva Lev Social</p>
           </div>
         </section>
-
-        <CircleSection />
 
         {/* 7 - The Promise */}
         <section id="promise" className="px-6 md:px-16 py-32 border-b border-black/10 text-center">
@@ -471,14 +445,29 @@ const NewLandingPage: React.FC = () => {
         <section id="gallery" className="px-6 md:px-16 py-28 border-b border-black/10">
           <div className="max-w-6xl mx-auto">
             <SectionNumber n="07" label="הוכחות" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-              {stats.map((stat, i) => (
-                <Reveal key={stat.label} delay={i * 0.1} className="text-center border-r border-black/10 first:border-r-0 px-4">
-                  <p className="text-3xl md:text-4xl font-display font-black text-[#79bddc9e]">{stat.value}</p>
-                  <p className="text-sm text-[#1c1a17]/60 mt-2">{stat.label}</p>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal className="mb-16 text-center">
+              <h2 className="text-2xl md:text-4xl font-display font-black leading-snug text-[#1c1a17]">
+                עשרות פרויקטים · עשרות מעצבות · מאות תכנים
+              </h2>
+              <p className="mt-2 text-xl md:text-3xl font-display font-bold text-[#9bc3de]">
+                ניסיון מעשי בעולם העיצוב, השיווק והתוכן.
+              </p>
+              <div dir="ltr" className="-mx-6 mt-12 overflow-hidden md:-mx-16">
+                <div className="flex w-max hover:[animation-play-state:paused]" style={{ animation: 'results-marquee 40s linear infinite' }}>
+                  {[...profilePictures, ...profilePictures].map((n, i) => (
+                    <img
+                      key={i}
+                      src={`/assets/profilesPictures/${n}.png`}
+                      alt=""
+                      aria-hidden="true"
+                      className="mr-6 h-20 w-20 flex-shrink-0 rounded-full object-cover shadow-md md:mr-10 md:h-32 md:w-32"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              </div>
+              <style>{`@keyframes results-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+            </Reveal>
 
             <Reveal className="mb-16">
               <ResultsCarousel items={videoResults} />
