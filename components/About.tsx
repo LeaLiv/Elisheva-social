@@ -25,9 +25,13 @@ const About: React.FC<AboutProps> = ({ content }) => {
             <div aria-hidden="true" className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
             
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-800">
-              <img 
+              <motion.img
                 src="/assets/self-picture.jpg"
                 alt="Elisheva Lev portrait working on site" 
+                initial={{ opacity: 0, scale: 1.3, y: 70, filter: 'blur(10px)' }}
+                whileInView={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
             </div>

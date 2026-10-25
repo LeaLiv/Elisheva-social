@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, animate, useMotionValue, useTransform, MotionValue } from 'framer-motion';
-import { ArrowLeft, CalendarDays, Camera, Instagram } from 'lucide-react';
+import { ArrowDown, ArrowLeft, CalendarDays, Camera, Instagram } from 'lucide-react';
+import { InstagramEmbed } from 'react-social-media-embed';
 
 const WHATSAPP_URL =
   'https://api.whatsapp.com/send?phone=972502092507&text=%D7%94%D7%99%D7%99+%D7%90%D7%9C%D7%99%D7%A9%D7%91%D7%A2,+%D7%A8%D7%95%D7%A6%D7%94+%D7%9C%D7%91%D7%93%D7%95%D7%A7+%D7%90%D7%9D+%D7%94%D7%AA%D7%94%D7%9C%D7%99%D7%9A+%D7%9E%D7%AA%D7%90%D7%99%D7%9D+%D7%9C%D7%A2%D7%A1%D7%A7+%D7%A9%D7%9C%D7%99';
@@ -46,7 +47,7 @@ const processSteps = [
     n: '01',
     title: 'פגישת אסטרטגיה',
     desc: 'פגישת עומק אישית שבה נבין את העסק שלך, נדייק קהל יעד, שירותים, בידול, מסרים ונבנה יחד אסטרטגיית תוכן מותאמת.',
-    image: '/assets/landing/circle/5.png',
+    image: '/assets/processSteps/1.jpeg',
     imageAlt: 'פגישת עבודה ותכנון אסטרטגי',
     Icon: CalendarDays,
   },
@@ -54,7 +55,7 @@ const processSteps = [
     n: '02',
     title: 'יום צילום + יצירת תוכן',
     desc: 'יום צילום מתוכנן מראש, בהתאם לאסטרטגיה ולמטרות העסק, ליצירת מאגר תוכן איכותי, מקצועי ומדויק.',
-    image: '/assets/landing/circle/3.png',
+    image: '/assets/processSteps/2.jpeg',
     imageAlt: 'מצלמה על חצובה במהלך יום צילום',
     Icon: Camera,
   },
@@ -62,7 +63,7 @@ const processSteps = [
     n: '03',
     title: 'פגישת Instagram + גאנט תוכן',
     desc: 'אחרי שיצרנו את התוכן, הופכים אותו לנוכחות ברורה ומסודרת בעמוד.',
-    image: '/assets/landing/circle/7.png',
+    image: '/assets/processSteps/3.jpeg',
     imageAlt: 'תכנון וארגון תכנים לרשתות החברתיות',
     Icon: Instagram,
   },
@@ -72,6 +73,120 @@ const videoResults = Array.from({ length: 14 }, (_, i) => 101 + i);
 
 const profilePictures = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+const recommendations = [
+  { src: '/assets/recomandation/reco1.mov', label: 'אלמוג סוקיטל' },
+  { src: '/assets/recomandation/reco2.mov', label: 'תמר רזיאל' },
+  { src: '/assets/recomandation/reco3.mov', label: 'קורין אולסמן' },
+  { src: '/assets/recomandation/reco4.mov', label: 'יעל נוימן' },
+];
+
+const clientTestimonials = [
+  {
+    quote: 'הגעתי כי רציתי תוכן, אבל מהר מאוד הבנתי שאני צריכה הרבה מעבר לזה. אלישבע עזרה לי להבין איך אני משווקת את העסק שלי בצורה הרבה יותר מדויקת.',
+    name: 'ע. זוארץ',
+  },
+  {
+    quote: 'אהובה שלי \nאני חייבת לך תודה ענקית!\nהגעתי ליום הצילומים הזה עם לא מעט חששות, בעיקר מהעמידה מול המצלמה ומהיציאה מאזור הנוחות שלי.\nאבל עם האנרגיות המדהימות שלך, הרגישות והדרך המיוחדת שלך, הצלחת לגרום לי להרגיש כל כך בנוח, להשתחרר ואפילו קצת לאהוב את עצמי מבעד למצלמה \nוזה מבחינתי הרבה מעבר ליום צילומים מוצלח!\nתודה על חוויה מדהימה, על הביטחון שנתת לי ועל מי שאת.\nאיזה כיף שבחרתי בך!\nמחכה כבר לראות את התוצאות ',
+    name: 'אירית',
+  },
+  {
+    quote: 'היא הצליחה להוציא ממני דברים שלא חשבתי בכלל שהם חלק מהשיווק שלי. פתאום הבנתי שהסיפור שלי, הדרך שלי והאישיות שלי הם חלק מהמותג.',
+    name: 'ק. אולסן',
+  },
+  {
+    quote: 'הרגשתי שסוף סוף מישהו רואה את העסק שלי מבחוץ ויודע לתרגם אותו לשיווק. התוכן הפך להיות הרבה יותר ברור, מקצועי ומדויק.',
+    name: 'י.נ.',
+  },
+  {
+    quote: 'מה שהכי אהבתי בתהליך הוא שהיא לא באה רק לצלם. היא באמת נכנסה לעסק שלי, הבינה מי אני, מה אני רוצה לשדר ולמי אני רוצה להגיע. יש לה הבנה אמיתית של עולם העיצוב והשיווק, והיא יודעת לנסח ולתרגם אליי במדויק.',
+    name: 'ת. רזיאל',
+  },
+];
+
+// Testimonials longer than this are shown full-width below the regular ones.
+const LONG_TESTIMONIAL_LENGTH = 300;
+const shortTestimonials = clientTestimonials.filter((t) => t.quote.length <= LONG_TESTIMONIAL_LENGTH);
+const longTestimonials = clientTestimonials.filter((t) => t.quote.length > LONG_TESTIMONIAL_LENGTH);
+const displayedTestimonials = [...longTestimonials, ...shortTestimonials];
+
+const TestimonialCard: React.FC<{ testimonial: { quote: string; name: string }; long?: boolean }> = ({
+  testimonial,
+  long,
+}) => (
+  <figure className={`group relative flex ${long ? 'h-full' : ''} flex-col overflow-hidden rounded-2xl border border-white/80 bg-white/80 p-3 text-right shadow-[0_8px_24px_rgba(28,26,23,0.08)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(28,26,23,0.13)] md:p-4`}>
+    <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-[#a9781f]/70 via-[#9bc3de]/70 to-transparent" />
+    <span aria-hidden="true" className="mb-1 font-display text-5xl leading-none text-[#a9781f]/60">“</span>
+    <blockquote
+      className={`whitespace-pre-line font-light text-[#1c1a17]/85 ${
+        long ? 'text-sm leading-relaxed md:text-base' : 'text-sm leading-relaxed'
+      }`}
+    >
+      {testimonial.quote}
+    </blockquote>
+    <figcaption className="mt-4 flex items-center gap-2 border-t border-[#1c1a17]/10 pt-3 text-sm font-bold text-[#1c1a17]">
+      <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#a9781f]" />
+      {testimonial.name}
+    </figcaption>
+  </figure>
+);
+
+// Add a reel's view count here when available.
+const instagramReels: { id: string; views?: string }[] = [
+  { id: 'DbOYB90IQLS' },
+  { id: 'DbldtjIomdM' },
+  { id: 'DZht4Q7I1n2' },
+  { id: 'DY1hhS2OUX0' },
+  { id: 'DVBsh_mjNi_' },
+  { id: 'DV6SgLqDGGf' },
+  { id: 'Ddwh59vsv_T' },
+  { id: 'DbgSBJRMzv8' },
+  { id: 'DdjtbXINuvR' },
+  { id: 'DavOO3aI352' },
+  { id: 'DX2HfuMtAdW' },
+  { id: 'DdwpRgku7mZ' },
+  { id: 'DYIVo_ZoZ4V' },
+  { id: 'DZ0gFHwoRzg' },
+  { id: 'DbBUjlcSJ7r' },
+  { id: 'Dc2xAooyEgX' },
+  { id: 'DeKBk17trB0' },
+  { id: 'DdoMAIrNZC9' },
+  { id: 'DbOfwCptkw8' },
+];
+const INITIAL_REELS = 6;
+
+const LazyReel: React.FC<{ id: string; views?: string }> = ({ id, views }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px' }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className="overflow-hidden rounded-2xl bg-white/80 shadow-[0_8px_24px_rgba(28,26,23,0.1)]">
+      <div className="min-h-[520px]">
+        {visible && <InstagramEmbed url={`https://www.instagram.com/reel/${id}/`} width="100%" captioned={false} />}
+      </div>
+      {views && (
+        <div dir="rtl" className="flex items-center justify-center border-t border-[#1c1a17]/10 px-4 py-3 text-sm font-bold text-[#1c1a17]">
+          <span>👁 {views} צפיות</span>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const circleItems = [
   { image: '/assets/landing/circle/1.png', label: 'העסק הבסיס להכל' },
@@ -165,15 +280,15 @@ const ResultsCarousel: React.FC<{ items: number[] }> = ({ items }) => {
   const tilts = ['-rotate-3', 'rotate-2', '-rotate-1', 'rotate-3', 'rotate-1', '-rotate-2', 'rotate-0'];
   const loop = [...items, ...items];
   return (
-    <div dir="ltr" className="group -mx-6 overflow-hidden py-4 md:-mx-16">
+    <div dir="ltr" className="group overflow-hidden py-4">
       <motion.div
         className="flex w-max group-hover:[animation-play-state:paused]"
         style={{ animation: `results-marquee ${items.length * 4}s linear infinite` }}
       >
         {loop.map((n, i) => (
           <motion.div
-            key={i}
-            className={`mr-5 flex-shrink-0 w-40 sm:w-48 md:w-56 bg-white p-2 pb-3 rounded-2xl shadow-lg border border-black/5 transition-transform duration-300 hover:!rotate-0 hover:scale-105 hover:shadow-2xl ${tilts[i % tilts.length]}`}
+            key={`${n}-${i}`}
+            className={`mr-4 w-32 flex-shrink-0 rounded-xl border border-black/5 bg-white p-2 pb-3 shadow-md transition-transform duration-300 hover:!rotate-0 hover:scale-105 hover:shadow-xl sm:mr-5 sm:w-40 md:w-44 ${tilts[i % tilts.length]}`}
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 3 + (i % 4) * 0.4, repeat: Infinity, ease: 'easeInOut', delay: (i % 5) * 0.25 }}
           >
@@ -193,6 +308,7 @@ const ResultsCarousel: React.FC<{ items: number[] }> = ({ items }) => {
   );
 };
 const NewLandingPage: React.FC = () => {
+  const [showAllReels, setShowAllReels] = useState(false);
   return (
     <div className="bg-[#faf7f2] text-[#1c1a17] font-sans" dir="rtl">
       <a
@@ -200,11 +316,11 @@ const NewLandingPage: React.FC = () => {
         aria-label="Elisheva Lev Home"
         className="fixed right-4 top-4 z-50 rounded-lg p-1 focus:outline-none focus:ring-2 focus:ring-[#a9781f] md:right-10 md:top-8"
       >
-        <img
+        {/* <img
           src="/assets/newLogo2.png"
           alt="Elisheva Lev - Interior Design Social Media"
           className="h-[68px] w-auto object-contain md:h-[92px]"
-        />
+        /> */}
       </a>
 
       {/* Ambient background glow */}
@@ -344,42 +460,110 @@ const NewLandingPage: React.FC = () => {
         </section> */}
 
         {/* 4 - About Elisheva */}
-        <section id="about" className="relative overflow-hidden px-6 md:px-16 py-28 md:min-h-screen md:flex md:items-center border-b border-black/10">
+        <section id="about" className="relative overflow-hidden border-b border-black/10 px-6 py-20 md:px-16 md:py-28">
           <div aria-hidden="true" className="absolute inset-0 hidden bg-[url('/assets/aboutBG.png')] bg-cover bg-center md:block" />
-                    <div aria-hidden="true" className="absolute inset-0 hidden bg-white/45 md:block" />
-                    <motion.img
-                      src="/assets/elisheva.png"
-                      alt="אלישבע לב"
-                      initial={{ opacity: 0, x: -120 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.9, ease: 'easeOut' }}
-                      className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-auto max-w-[32%] object-contain object-bottom md:block"
-                    />
-                    <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center justify-center gap-10">
-                      <Reveal className="text-center">
-              <SectionNumber n="04" label="מי מובילה את זה" />
-              <h2 className="text-3xl md:text-5xl font-display font-black mb-6">נעים מאוד, אני אלישבע.</h2>
-              <div className="space-y-5 text-lg text-center text-[#1c1a17]/75 font-light leading-relaxed">
-                <p>
+          <div aria-hidden="true" className="absolute inset-0 hidden bg-white/45 md:block" />
+          <div className="relative mx-auto w-full max-w-6xl">
+            <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
+              <Reveal className="w-full max-w-3xl text-center md:flex-1">
+                <SectionNumber n="04" label="מי מובילה את זה" />
+                <h2 className="mb-6 text-3xl font-display font-black md:text-5xl">נעים מאוד, אני אלישבע.</h2>
+                <p className="text-lg text-center font-light leading-relaxed text-[#1c1a17]/75">
                   בשנה האחרונה צילמתי עשרות פרויקטים, עבדתי לצד מעצבות, ישבתי איתן על העסק, זיקקתי אסטרטגיות, בניתי
                   תוכן והפכתי את העבודה שלהן לסיפור שאפשר לראות ולהרגיש בדיגיטל.
                 </p>
-                <p className="text-[#1c1a17]/50">ובדרך הבנתי משהו:</p>
-                <p className="text-[#a9781f] font-medium text-xl">מעצבות לא צריכות עוד מישהי שתעלה להן פוסט.</p>
-                <p>
-                  הן צריכות חיבור בין <span className="text-[#1c1a17] font-medium">העסק, האסטרטגיה, התוכן, הצילום והנוכחות
-                  הדיגיטלית.</span>
-                </p>
-                <p className="text-[#1c1a17]/50">משם נבנה התהליך שלי.</p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.2} className="flex justify-center md:hidden">
-              <img
-                src="/assets/elisheva.png"
-                alt="אלישבע לב"
-                className="h-auto max-h-[100vh] w-full max-w-[380px] object-contain"
-              />
+              </Reveal>
+              <motion.div
+                initial={{ opacity: 0, y: 36, scale: 0.96, rotate: 2 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                whileHover={{ y: -8 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="relative w-full max-w-[320px] shrink-0 sm:max-w-[360px] md:max-w-[380px]"
+              >
+                <div aria-hidden="true" className="absolute -inset-5 rounded-[2.5rem] bg-[#a9781f]/15 blur-2xl" />
+                <div className="relative rounded-[2rem] border border-white/80 bg-white/65 p-3 shadow-[0_30px_80px_rgba(28,26,23,0.22)] backdrop-blur-sm">
+                  <div className="overflow-hidden rounded-[1.4rem] bg-[#e8e1d8]">
+                    <motion.img
+                      src="/assets/elisheva.png"
+                      alt="אלישבע לב"
+                      whileHover={{ scale: 1.04 }}
+                      transition={{ duration: 0.6, ease: 'easeOut' }}
+                      className="h-[420px] w-full object-cover object-[center_32%] sm:h-[480px] md:h-[540px]"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <section id="gallery" className="mt-20 border-y border-black/10 py-12 md:mt-24 md:py-16" aria-labelledby="proof-title">
+              <Reveal>
+                <div className="text-center">
+                  <p className="mb-3 text-xs font-bold tracking-[0.24em] text-[#a9781f]">ניסיון מהשטח</p>
+                  <h3 id="proof-title" className="text-2xl font-display font-black leading-snug text-[#1c1a17] md:text-4xl">
+                    עשרות פרויקטים · עשרות מעצבות · מאות תכנים
+                  </h3>
+                  <p className="mt-3 text-base font-light text-[#1c1a17]/60 md:text-xl">
+                    ניסיון מעשי בעולם העיצוב, השיווק והתוכן.
+                  </p>
+                </div>
+
+                <div dir="ltr" className="mt-8 overflow-hidden">
+                  <div className="flex w-max hover:[animation-play-state:paused]" style={{ animation: 'results-marquee 40s linear infinite' }}>
+                    {[...profilePictures, ...profilePictures].map((n, i) => (
+                      <img
+                        key={`${n}-${i}`}
+                        src={`/assets/profilesPictures/${n}.png`}
+                        alt=""
+                        aria-hidden="true"
+                        className="mr-4 h-14 w-14 flex-shrink-0 rounded-full object-cover shadow-md sm:mr-6 sm:h-20 sm:w-20 md:mr-8 md:h-24 md:w-24"
+                        loading="lazy"
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-10 text-center">
+                  <p className="flex flex-wrap items-center justify-center gap-2 text-base font-display font-bold text-[#1c1a17]/75 sm:gap-4 sm:text-xl md:text-2xl">
+                    <span>מה עשינו</span>
+                    <ArrowLeft size={18} className="text-[#a9781f]" />
+                    <span>איך עשינו</span>
+                    <ArrowLeft size={18} className="text-[#a9781f]" />
+                    <span>מה קרה</span>
+                  </p>
+                  <p className="mt-2 text-sm font-light text-[#1c1a17]/55 sm:text-base">
+                    צפיות, נתונים, צילומי מסך, רילסים, לפני ואחרי והמלצות.
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <ResultsCarousel items={videoResults} />
+                </div>
+              </Reveal>
+            </section>
+
+            <Reveal className="mx-auto mt-16 max-w-3xl text-center md:mt-20">
+              <p className="mb-4 text-lg font-light text-[#1c1a17]/55 md:text-xl">ובדרך הבנתי משהו:</p>
+              <p className="text-2xl font-display font-bold leading-relaxed text-[#a9781f] md:text-4xl">
+                מעצבות לא צריכות עוד מישהי שתעלה להן פוסט.
+              </p>
+              <p className="mt-5 text-lg font-light leading-relaxed text-[#1c1a17]/75 md:text-2xl">
+                הן צריכות חיבור בין <span className="font-medium text-[#1c1a17]">העסק, האסטרטגיה, התוכן, הצילום והנוכחות הדיגיטלית.</span>
+              </p>
+              <p className="mt-5 text-base font-light text-[#1c1a17]/55 md:text-lg">משם נבנה התהליך שלי.</p>
+              <motion.a
+                href="#system"
+                aria-label="המשך לפירוט התהליך"
+                className="mt-6 inline-flex flex-col items-center gap-1 text-[#a9781f]"
+              >
+                <span className="text-sm font-medium">מה השיטה שלי?</span>
+                <motion.span
+                  aria-hidden="true"
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <ArrowDown size={28} strokeWidth={1.5} />
+                </motion.span>
+              </motion.a>
             </Reveal>
           </div>
         </section>
@@ -387,34 +571,128 @@ const NewLandingPage: React.FC = () => {
         <CircleSection />
 
         {/* 5 - The Solution / Premium Process */}
-        <section id="process" className="border-b border-black/10 bg-[#f4f0eb] px-6 py-16 md:px-16 md:py-20">
-          <div className="mx-auto max-w-5xl">
-            <div className="divide-y divide-[#1c1a17]/70">
+        <section id="process" className="relative isolate overflow-hidden border-b border-black/10 bg-[#f4f0eb] px-6 py-16 md:px-16 md:py-20">
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[url('/assets/backProcess.png')] bg-cover bg-center" />
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#f4f0eb]/80" />
+          <div className="relative mx-auto max-w-5xl">
+            <Reveal className="mb-12 text-center md:mb-16">
+              <p className="mb-3 text-xs font-bold tracking-[0.24em] text-[#a9781f]">הדרך שלנו יחד</p>
+              <h2 className="font-display text-3xl font-black text-[#1c1a17] md:text-5xl">
+                <span className="relative inline-block">
+                  מה כולל התהליך?
+                  <span aria-hidden="true" className="absolute -bottom-2 left-0 right-0 h-2 -rotate-1 rounded-full bg-[#9bc3de]/55" />
+                </span>
+              </h2>
+            </Reveal>
+
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
               {processSteps.map((step, i) => (
-                <Reveal key={step.n} delay={i * 0.08}>
-                  <article className="grid grid-cols-[minmax(0,1fr)_88px] items-center gap-x-4 py-8 md:grid-cols-[minmax(0,1fr)_116px] md:gap-x-8 md:py-10">
-                    <div className="text-right">
-                      <div className="mb-3 flex items-center gap-3">
+                <Reveal key={step.n} delay={i * 0.08} className="h-full">
+                  <article className="flex h-full flex-col border-t border-[#1c1a17]/70 px-1 py-6 text-right md:px-4 md:py-8">
+                    <div className="mb-6 flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
                         <span className="font-display text-4xl leading-none text-[#46382f] md:text-5xl">{step.n}</span>
-                        <span aria-hidden="true" className="h-5 w-px bg-[#1c1a17]" />
+                        <span aria-hidden="true" className="h-8 w-px bg-[#1c1a17]/70" />
                         <h3 className="text-base font-bold leading-snug md:text-lg">{step.title}</h3>
                       </div>
-                      <p className="text-sm leading-relaxed text-[#1c1a17]/80 md:text-base">{step.desc}</p>
+                      <div className="relative flex h-[68px] w-[68px] shrink-0 items-center justify-center md:h-[76px] md:w-[76px]">
+                        <img
+                          src={step.image}
+                          alt={step.imageAlt}
+                          className="h-full w-full rounded-full object-cover shadow-[0_12px_28px_rgba(28,26,23,0.18)]"
+                          loading="lazy"
+                        />
+                        <step.Icon aria-hidden="true" className="absolute -top-2 -left-2 h-7 w-7 stroke-[1.5] text-[#9bc3de] drop-shadow-sm md:h-8 md:w-8" />
+                      </div>
                     </div>
-
-                    <div className="relative flex h-[88px] w-[88px] items-center justify-center md:h-[116px] md:w-[116px]">
-                      <img
-                        src={step.image}
-                        alt={step.imageAlt}
-                        className="h-full w-full rounded-full object-cover shadow-[0_12px_28px_rgba(28,26,23,0.18)]"
-                        loading="lazy"
-                      />
-                      <step.Icon aria-hidden="true" className="absolute -top-3 left-0 h-8 w-8 stroke-[1.5] text-[#9bc3de] drop-shadow-sm md:-top-4 md:-left-2 md:h-10 md:w-10" />
-                    </div>
+                    <p className="text-sm leading-relaxed text-[#1c1a17]/80 md:text-base">{step.desc}</p>
                   </article>
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* 8 - Recommendations */}
+        <section id="recommendations" className="relative isolate overflow-hidden border-b border-black/10 bg-[#f4f0eb] px-6 py-20 md:px-16 md:py-28">
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[url('/assets/recoBack.png')] bg-cover bg-center" />
+          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#f4f0eb]/75" />
+          <div className="relative mx-auto max-w-7xl">
+            <Reveal className="mb-12 text-center md:mb-16">
+              <p className="text-sm leading-relaxed text-[#1c1a17]/75 md:text-base">
+                ועכשיו תראי את זה בפועל, כי בסופו של דבר, התוצאה חשובה יותר מהמילים.
+              </p>
+              <p className="mt-8 text-sm font-medium text-[#1c1a17]/55 md:text-base">
+                מה השתנה אצל המעצבות שעבדו איתי?
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-black text-[#1c1a17] md:text-5xl">
+                מעצבות שעברו את התהליך
+              </h2>
+              <p className="mt-2 text-base text-[#1c1a17]/60 md:text-xl">וזה מה שיש להן להגיד על זה.</p>
+            </Reveal>
+
+            <div dir="rtl" className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {displayedTestimonials.map((testimonial, index) => {
+                const isLong = testimonial.quote.length > LONG_TESTIMONIAL_LENGTH;
+                return (
+                  <Reveal
+                    key={testimonial.name}
+                    delay={(index % 3) * 0.08}
+                    className={isLong ? 'lg:row-span-2 lg:self-stretch' : 'self-start'}
+                  >
+                    <TestimonialCard testimonial={testimonial} long={isLong} />
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            <div dir="rtl" className="mx-auto mt-8 grid max-w-6xl grid-cols-1 justify-items-center gap-5 sm:grid-cols-2 md:grid-cols-4">
+              {recommendations.map((recommendation, index) => (
+                <Reveal key={recommendation.src} delay={index * 0.08} className="w-full max-w-[260px] min-w-0">
+                  <article className="overflow-hidden rounded-2xl bg-white/65 shadow-[0_8px_24px_rgba(28,26,23,0.1)]">
+                    <div className="aspect-[9/16]">
+                      <video
+                        src={recommendation.src}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        aria-label={recommendation.label}
+                        className="h-full w-full object-cover"
+                      >
+                        הדפדפן שלך לא תומך בהפעלת וידאו.
+                      </video>
+                    </div>
+                    <p className="px-4 py-3 text-right text-sm font-medium text-[#1c1a17]/75">{recommendation.label}</p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Instagram reels */}
+        <section id="reels" className="border-b border-black/10 bg-[#f4f0eb] px-6 py-20 md:px-16 md:py-28">
+          <div className="mx-auto max-w-6xl">
+            <Reveal className="mb-12 text-center">
+              <h2 className="font-display text-3xl font-black text-[#1c1a17] md:text-5xl">התוצאות באינסטגרם</h2>
+              <p className="mt-3 text-base text-[#1c1a17]/60 md:text-xl">רילס אמיתיים, מעורבות אמיתית.</p>
+            </Reveal>
+            <div dir="rtl" className="grid grid-cols-1 items-start gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {instagramReels.slice(0, showAllReels ? undefined : INITIAL_REELS).map((reel) => (
+                <LazyReel key={reel.id} {...reel} />
+              ))}
+            </div>
+            {!showAllReels && instagramReels.length > INITIAL_REELS && (
+              <div className="mt-10 text-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAllReels(true)}
+                  className="rounded-full border border-[#a9781f] px-8 py-3 font-bold text-[#a9781f] transition-colors duration-300 hover:bg-[#a9781f] hover:text-white"
+                >
+                  עוד רילס
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
@@ -437,51 +715,6 @@ const NewLandingPage: React.FC = () => {
                   </span>
                 )
               )}
-            </Reveal>
-          </div>
-        </section>
-
-        {/* 7 - Proof */}
-        <section id="gallery" className="px-6 md:px-16 py-28 border-b border-black/10">
-          <div className="max-w-6xl mx-auto">
-            <SectionNumber n="07" label="הוכחות" />
-            <Reveal className="mb-16 text-center">
-              <h2 className="text-2xl md:text-4xl font-display font-black leading-snug text-[#1c1a17]">
-                עשרות פרויקטים · עשרות מעצבות · מאות תכנים
-              </h2>
-              <p className="mt-2 text-xl md:text-3xl font-display font-bold text-[#9bc3de]">
-                ניסיון מעשי בעולם העיצוב, השיווק והתוכן.
-              </p>
-              <div dir="ltr" className="-mx-6 mt-12 overflow-hidden md:-mx-16">
-                <div className="flex w-max hover:[animation-play-state:paused]" style={{ animation: 'results-marquee 40s linear infinite' }}>
-                  {[...profilePictures, ...profilePictures].map((n, i) => (
-                    <img
-                      key={i}
-                      src={`/assets/profilesPictures/${n}.png`}
-                      alt=""
-                      aria-hidden="true"
-                      className="mr-6 h-20 w-20 flex-shrink-0 rounded-full object-cover shadow-md md:mr-10 md:h-32 md:w-32"
-                      loading="lazy"
-                    />
-                  ))}
-                </div>
-              </div>
-              <style>{`@keyframes results-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
-            </Reveal>
-
-            <Reveal className="mb-16">
-              <ResultsCarousel items={videoResults} />
-            </Reveal>
-
-            <Reveal delay={0.2} className="border border-black/10 rounded-2xl p-10 text-center bg-white/60">
-              <p className="flex flex-wrap justify-center items-center gap-3 text-lg md:text-2xl font-display font-bold mb-4">
-                <span>מה עשינו</span>
-                <ArrowLeft size={20} className="text-[#79bddc9e]" />
-                <span>איך עשינו</span>
-                <ArrowLeft size={20} className="text-[#79bddc9e]" />
-                <span>מה קרה</span>
-              </p>
-              <p className="text-[#1c1a17]/60 font-light">עם צפיות, נתונים, צילומי מסך, רילסים, לפני/אחרי והמלצות.</p>
             </Reveal>
           </div>
         </section>
@@ -509,13 +742,6 @@ const NewLandingPage: React.FC = () => {
                 לתיאום שיחת התאמה
                 <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
               </a>
-            </Reveal>
-            <Reveal delay={0.4} className="mt-20 pt-10 border-t border-black/10 text-[#1c1a17]/50 font-light leading-relaxed max-w-2xl mx-auto">
-              <p className="mb-2">המוצר הוא לא "אסטרטגיה + צילום + אינסטגרם". אלה המרכיבים.</p>
-              <p>
-                המוצר הוא לקחת מעצבת שיש לה עסק טוב אבל השיווק שלה לא משקף אותו - ולבנות לה מערכת שיווקית שלמה,
-                מקצועית ומדויקת שמציגה את הערך שלה.
-              </p>
             </Reveal>
           </div>
         </section>
