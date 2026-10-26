@@ -1,19 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Layout, Layers, HelpCircle } from 'lucide-react';
-
-interface PainPoint {
-  icon: React.ReactNode;
-  text: string;
-}
+import type { PainPointsContent } from '../types/content';
 
 interface PainPointsProps {
-  content: {
-    title: string;
-    subtitle: string;
-    description: React.ReactNode;
-    points: PainPoint[];
-  };
+  content: PainPointsContent;
 }
 
 const PainPoints: React.FC<PainPointsProps> = ({ content }) => {

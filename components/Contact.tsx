@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
+import type { ContactContent } from '../types/content';
+import { businessContact } from '../data/contact';
 
 interface ContactProps {
-  content: {
-    title: string;
-    description: string;
-  };
+  content: ContactContent;
 }
 
 const Contact: React.FC<ContactProps> = ({ content }) => {
@@ -44,7 +43,7 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
             transition={{ delay: 0.2 }}
           >
             <a
-              href="https://api.whatsapp.com/send?phone=972502092507&text=%D7%94%D7%99%D7%99+%D7%90%D7%9C%D7%99%D7%A9%D7%91%D7%A2,+%D7%90%D7%A9%D7%9E%D7%97+%D7%9C%D7%A9%D7%9E%D7%95%D7%A2+%D7%A4%D7%A8%D7%98%D7%99%D7%9D+%D7%A2%D7%9C+%D7%9C%D7%99%D7%95%D7%95%D7%99+%D7%94%D7%A1%D7%95%D7%A9%D7%99%D7%90%D7%9C+%D7%A9%D7%9C%D7%9A+%D7%9C%D7%9E%D7%A2%D7%A6%D7%91%D7%99%D7%9D"
+              href={businessContact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-4 group min-w-[120px]"
@@ -54,25 +53,25 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
               </div>
               <span className="text-lg font-medium group-hover:text-blue-400 transition-colors">WhatsApp</span>
             </a>
-            <a href="tel:0502092507" className="flex flex-col items-center gap-4 group">
+            <a href={businessContact.phoneHref} className="flex flex-col items-center gap-4 group">
               <div className="bg-stone-800 p-6 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
                 <Phone size={32} aria-hidden="true" />
               </div>
-              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors" aria-label="Call 050-2092507">050-2092507</span>
+              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors" aria-label={businessContact.phoneAriaLabel}>{businessContact.phoneLabel}</span>
             </a>
 
-            <a href="mailto:social@elishevalev.co.il" className="flex flex-col items-center gap-4 group">
+            <a href={`mailto:${businessContact.email}`} className="flex flex-col items-center gap-4 group">
               <div className="bg-stone-800 p-6 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
                 <Mail size={32} aria-hidden="true" />
               </div>
-              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors" aria-label="Email social@elishevalev.co.il">social@elishevalev.co.il</span>
+              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors" aria-label={businessContact.emailAriaLabel}>{businessContact.email}</span>
             </a>
 
-            <a href="https://www.instagram.com/elisheva_lev_social" className="flex flex-col items-center gap-4 group">
+            <a href={businessContact.instagramUrl} className="flex flex-col items-center gap-4 group">
               <div className="bg-stone-800 p-6 rounded-full group-hover:bg-blue-500 transition-colors duration-300">
                 <Instagram size={32} aria-hidden="true" />
               </div>
-              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors">@elisheva_lev_social</span>
+              <span className="text-lg font-medium group-hover:text-blue-400 transition-colors">{businessContact.instagramHandle}</span>
             </a>
           </motion.div>
 

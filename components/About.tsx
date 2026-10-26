@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import type { AboutContent } from '../types/content';
+
 interface AboutProps {
-  content: {
-    title: string;
-    text: React.ReactNode;
-  };
+  content: AboutContent;
 }
 
 const About: React.FC<AboutProps> = ({ content }) => {

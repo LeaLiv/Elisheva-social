@@ -1,35 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, TrendingUp, User, CheckCircle, ArrowLeft, Check } from 'lucide-react';
-
-interface FoundationItem {
-  title: string;
-  desc: string;
-  icon: React.ReactNode;
-  color: string;
-  subtitle?: string;
-  features?: string[];
-}
-
-type FeatureItem = string | { title: string; desc: string };
-
-interface TrackItem {
-  title: string;
-  target: string;
-  features: FeatureItem[]; 
-  buttonText: string;
-  isPrimary: boolean;
-}
+import { CheckCircle, ArrowLeft, Check } from 'lucide-react';
+import type { ProcessContent, TrackItem } from '../types/content';
 
 interface ProcessProps {
-  content: {
-    foundationsTitle: string;
-    foundationsDesc: string;
-    foundations: FoundationItem[];
-    tracksTitle: string;
-    tracksDesc: string;
-    tracks: TrackItem[];
-  };
+  content: ProcessContent;
 }
 
 const Process: React.FC<ProcessProps> = ({ content }) => {

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation, BrowserRouter } from 'react-router-dom';
-import Header from './components/Header';
 import Footer from './components/Footer';
-import BusinessPage from './components/BusinessLanding/BusinessPage'; // Import the new page
+import BusinessPage from './components/BusinessLanding/BusinessPage';
 import NewLandingPage from './components/NewLandingPage';
 import NotFound from './components/NotFound';
 
@@ -16,25 +15,18 @@ const ScrollToTop = () => {
 };
 
 // Layout wrapper component
-const LayoutWrapper: React.FC = () => {
-  const { pathname } = useLocation();
-  const isHomePage = pathname === '/';
-
-  return (
-    <>
-      {/* {!isHomePage && <Header />} */}
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<NewLandingPage />} />
-          {/* Updated Route to use the new dedicated component */}
-          <Route path="/business" element={<BusinessPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
-    </>
-  );
-};
+const LayoutWrapper: React.FC = () => (
+  <>
+    <main className="flex-grow">
+      <Routes>
+        <Route path="/" element={<NewLandingPage />} />
+        <Route path="/business" element={<BusinessPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </main>
+    <Footer />
+  </>
+);
 
 function App() {
   return (
