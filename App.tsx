@@ -20,7 +20,7 @@ const LayoutWrapper: React.FC = () => (
     <main className="flex-grow">
       <Routes>
         <Route path="/" element={<NewLandingPage />} />
-        <Route path="/business" element={<BusinessPage />} />
+        {/* <Route path="/business" element={<BusinessPage />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
