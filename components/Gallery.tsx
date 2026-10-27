@@ -1,28 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { InstagramEmbed } from 'react-social-media-embed';
-
-// הגדרת הטיפוסים (Types)
-type MediaType = 'instagram' | 'video';
-
-interface GalleryItem {
-  type: MediaType;
-  url: string;
-  poster?: string;
-}
+import type { GalleryContent } from '../types/content';
 
 interface GalleryProps {
-  content: {
-    title: string;
-    description: React.ReactNode;
-    items: GalleryItem[]; // 👈 הוספנו את זה כאן
-  };
+  content: GalleryContent;
 }
 
 const Gallery: React.FC<GalleryProps> = ({ content }) => {
-  // מחקנו את המערך הקבוע שהיה כאן (const reels = ...)
-  // עכשיו משתמשים ישירות ב-content.items
-
   return (
     <section id="gallery" className="py-24 bg-stone-900 text-white">
       <div className="container mx-auto px-6">

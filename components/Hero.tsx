@@ -2,14 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 
+import type { HeroContent } from '../types/content';
+
 interface HeroProps {
-  content: {
-    subtitle?: string;
-    title: React.ReactNode;
-    description: string;
-    primaryBtn: string;
-    secondaryBtn: string;
-  };
+  content: HeroContent;
 }
 
 const Hero: React.FC<HeroProps> = ({ content }) => {

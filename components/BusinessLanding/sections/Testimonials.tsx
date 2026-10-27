@@ -1,21 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import { businessTestimonials } from '../../../data/businessTestimonials';
 
 const Testimonials: React.FC = () => {
-  const testimonials = [
-    {
-      text: "היה יום צילום נדיר! לא האמנתי שאפשר להספיק כל כך הרבה ועדיין ליהנות מהדרך.",
-      author: "לקוחה מרוצה",
-      role: "בעלת עסק"
-    },
-    {
-      text: "לא ציפיתי לכזאת בהירות וכלים פרקטיים. סוף סוף יש לי תוכנית עבודה מסודרת.",
-      author: "משתתפת סדנה",
-      role: "מעצבת פנים"
-    }
-  ];
-
   return (
     <section className="py-20 bg-stone-900 text-white">
       <div className="container mx-auto px-6">
@@ -24,7 +12,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {testimonials.map((item, idx) => (
+          {businessTestimonials.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.9 }}
