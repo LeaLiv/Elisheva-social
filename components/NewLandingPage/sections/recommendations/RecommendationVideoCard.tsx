@@ -14,6 +14,7 @@ const RecommendationVideoCard: React.FC<RecommendationVideoCardProps> = ({ recom
       <div className="aspect-[9/16]">
         <video
           src={recommendation.src}
+          poster={recommendation.poster}
           controls
           playsInline
           preload="metadata"

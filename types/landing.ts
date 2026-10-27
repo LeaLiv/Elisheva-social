@@ -16,6 +16,7 @@ export interface ProcessStep {
 
 export interface Recommendation {
   src: string;
+  poster: string;
   label: string;
 }
 

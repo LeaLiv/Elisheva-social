@@ -1,73 +1,37 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Briefcase, Palette } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import AmbientGlow from './NewLandingPage/shared/AmbientGlow';
+import { landingCopy } from '../data/landing';
 
-const NotFound = () => {
-  return (
-    // 👇 השינוי כאן: הוספתי pt-32 כדי להרחיק את התוכן מהתפריט העליון במובייל
-    <div className="min-h-screen bg-stone-50 flex flex-col items-center justify-center p-6 pt-32 md:pt-24 text-center" dir="rtl">
-      
-      {/* כותרת */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-12"
+const NotFound = () => (
+  <div className="relative isolate flex min-h-[70vh] items-center justify-center overflow-hidden bg-[#faf7f2] px-6 py-24 text-[#1c1a17]" dir="rtl">
+    <AmbientGlow />
+
+    <motion.main
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="relative z-10 mx-auto w-full max-w-3xl text-center"
+    >
+      <p className="mb-6 font-display text-7xl font-black leading-none text-[#a9781f]/20 md:text-9xl" aria-hidden="true">
+        404
+      </p>
+      <p className="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-[#a9781f] md:text-base">
+        העמוד הזה לא נמצא
+      </p>
+      <h1 className="font-display text-3xl font-black leading-tight md:text-5xl">
+        נראה שהלינק הזה לקח אותך למקום שלא קיים.
+      </h1>
+      <Link
+        to="/"
+        className="group mt-10 inline-flex items-center gap-3 rounded-full border border-[#a9781f] px-8 py-4 text-lg font-bold text-[#a9781f] transition-colors duration-300 hover:bg-[#a9781f] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#a9781f] focus:ring-offset-2 focus:ring-offset-[#faf7f2]"
       >
-        <h1 className="text-6xl font-black text-stone-900 mb-4">404</h1>
-        <h2 className="text-2xl md:text-3xl font-bold text-stone-700 mb-2">
-          אופס! נראה שהגעתם למקום הלא נכון
-        </h2>
-        <p className="text-stone-500 text-lg">
-          אבל אל דאגה, בואו נחזור למסלול. לאן תרצו להמשיך?
-        </p>
-      </motion.div>
-
-      {/* כרטיסי הניווט */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-        
-        {/* כרטיס למעצבים - מפנה לדף הבית */}
-        <Link to="/" className="group">
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="bg-white border border-stone-200 p-10 rounded-3xl shadow-sm hover:shadow-xl hover:border-blue-500 transition-all duration-300 h-full flex flex-col items-center justify-center relative overflow-hidden"
-          >
-            <div className="bg-stone-100 p-4 rounded-full mb-6 text-stone-800 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
-              <Palette size={40} strokeWidth={1.5} />
-            </div>
-            <h3 className="text-3xl font-bold text-stone-900 mb-2">למעצבים</h3>
-            <p className="text-stone-500 mb-8">כלים, השראות ותהליכי עבודה</p>
-            
-            <div className="flex items-center gap-2 text-blue-600 font-bold group-hover:gap-4 transition-all">
-              <span>מעבר לאתר</span>
-              <ArrowLeft size={20} />
-            </div>
-          </motion.div>
-        </Link>
-
-        {/* כרטיס לעסקים - מפנה לדף העסקי */}
-        <Link to="/business" className="group">
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="bg-stone-900 border border-stone-900 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col items-center justify-center relative overflow-hidden"
-          >
-            <div className="bg-stone-800 p-4 rounded-full mb-6 text-white group-hover:bg-stone-700 transition-colors">
-              <Briefcase size={40} strokeWidth={1.5} />
-            </div>
-            <h3 className="text-3xl font-bold text-white mb-2">לעסקים</h3>
-            <p className="text-stone-400 mb-8">פתרונות, אסטרטגיה וניהול סושיאל</p>
-            
-            <div className="flex items-center gap-2 text-blue-400 font-bold group-hover:gap-4 transition-all">
-              <span>למידע נוסף</span>
-              <ArrowLeft size={20} />
-            </div>
-          </motion.div>
-        </Link>
-
-      </div>
-    </div>
-  );
-};
+        חזרה לעמוד הבית
+        <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+      </Link>
+    </motion.main>
+  </div>
+);
 
 export default NotFound;
